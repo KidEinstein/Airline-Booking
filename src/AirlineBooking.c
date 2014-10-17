@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "booking.h"
-void main()
+int main()
 {
 	startBooking();
 	int choice_user,choice, ch;
