@@ -1,10 +1,12 @@
+//Made by Anirudh & Apeksha
 #include<stdio.h>
 #include<stdlib.h>
 #include "booking.h"
-int main()
+void main()
 {
 	startBooking();
 	int choice_user,choice, ch;
+	printf("Test");
 	while(true)
 	{
 		printf("Enter\n 1. Administrator\n 2. User\n 3. Exit\n");
@@ -15,6 +17,7 @@ int main()
 		case 1:
 			printf("Enter\n 1. Add new flight\n 2. Change seat availability");
 			scanf("%d",&ch);
+			scanf("%*c");
 			switch(ch)
 			{
 			case 1:
