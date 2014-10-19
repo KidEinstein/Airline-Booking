@@ -287,5 +287,35 @@ void change_seatAvail()
 	scanf("%d",&seatAvail);
 	updateSeats(fn, seatAvail);
 }
+char* encrypt(char *array)
+{
+    int i;
+    int array_size=strlen(array);
+    char newString[strlen(array)];
+    char secret[8] = { 22, 53, 44, 71, 66, 177, 253, 122 };
+    for(i = 0; i < array_size; i++)
+        array[i] = array[i] ^ secret[i];
+    //printf("Program : %s",array);
+    return array;
+}
+bool checkPass()
+{
+	FILE *fp;
+	char passf[10],pass[10];
+	printf("Enter password: ");
+	scanf("%s",pass);
 
+	fp=fopen("src/password.txt","r");
+	fscanf(fp,"%s",passf);
+	//printf("File: %s",passf);
+	if(strcmp(encrypt(pass),passf)==0)
+		printf("Authentication successful\n");
+	else
+	{
+		printf("Incorrect password\n");
+		return false;
+	}
+	return true;
+	fclose(fp);
+}
 #endif /* BOOKING_H_ */

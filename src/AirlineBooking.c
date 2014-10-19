@@ -15,6 +15,8 @@ int main()
 		switch(choice)
 		{
 		case 1:
+			if(!checkPass())
+				break;
 			printf("Enter\n 1. Add new flight\n 2. Change seat availability\n");
 			scanf("%d",&ch);
 			scanf("%*c");
