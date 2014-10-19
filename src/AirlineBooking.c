@@ -6,16 +6,16 @@ int main()
 {
 	startBooking();
 	int choice_user,choice, ch;
-	printf("Test");
 	while(true)
 	{
 		printf("Enter\n 1. Administrator\n 2. User\n 3. Exit\n");
 		scanf("%d", &choice);
 		scanf("%*c");
+
 		switch(choice)
 		{
 		case 1:
-			printf("Enter\n 1. Add new flight\n 2. Change seat availability");
+			printf("Enter\n 1. Add new flight\n 2. Change seat availability\n");
 			scanf("%d",&ch);
 			scanf("%*c");
 			switch(ch)
