@@ -17,7 +17,7 @@ int main()
 		case 1:
 			if(!checkPass())
 				break;
-			printf("Enter\n 1. Add new flight\n 2. Change seat availability\n");
+			printf("Enter\n 1. Add new flight\n 2. Change seat availability\n 3. Update Fare\n");
 			scanf("%d",&ch);
 			scanf("%*c");
 			switch(ch)
@@ -28,6 +28,10 @@ int main()
 			case 2:
 				change_seatAvail();
 				break;
+			case 3:
+				change_fare();
+				break;
+
 			}
 			break;
 		case 2:

@@ -119,23 +119,23 @@ int count(int n)
 void updateSeats(char* fn, int new_seatAvail)
 {
 	char ffn[10];
-	int seatAvail;
+	int seatAvail,flag=0;
 	fi=fopen("src/flights.txt", "r+");
 	while(fscanf(fi, "%*[^,],%*[^,],%*[^,],%[^,],%*[^,],%*[^,],%*d,%d", ffn,&seatAvail)!=EOF)
 	{
 		if(strcmp(ffn,fn)==0)
 		{
-
+			flag=1;
 			fseek(fi, -count(seatAvail), SEEK_CUR);
 			if(new_seatAvail==-1)
 				fprintf(fi, "%d", --seatAvail);
 			else
 				fprintf(fi, "%d", new_seatAvail);
 			//printf("%d\n",seatAvail);
-			break;
 		}
 	}
-	printf("Flight not found");
+	if(flag==0)
+		printf("Flight not found\n");
 	fclose(fi);
 }
 bool isSeatAvailable(int n)
@@ -174,6 +174,29 @@ void displayBooking(int x)
 
 }
 
+void updateFare(char* fn, int new_fare)
+{
+	char ffn[10];
+	int seatAvail,ffare;
+	fi=fopen("src/flights.txt", "r+");
+	while(fscanf(fi, "%*[^,],%*[^,],%*[^,],%[^,],%*[^,],%*[^,],%d,%d", ffn,&ffare,&seatAvail)!=EOF)
+	{
+		if(strcmp(ffn,fn)==0)
+		{
+
+			fseek(fi, -count(seatAvail)-1-count(ffare), SEEK_CUR);
+			if(new_fare==-1&&seatAvail==10)
+				fprintf(fi, "%d,%d", 2*ffare,seatAvail);
+			else
+				fprintf(fi, "%d,%d", new_fare,seatAvail);
+			//printf("%d\n",seatAvail);
+			return;
+		}
+	}
+	printf("Flight not found");
+	fclose(fi);
+}
+
 void newBooking()
 {
 	int choice;
@@ -208,11 +231,22 @@ void newBooking()
 	fgets(booking[nTicket].date, sizeof(booking[nTicket].date), stdin);
 	gen_reference(booking[nTicket].booking_reference,10);
 	updateSeats(booking[nTicket].flight_number, -1);
+	updateFare(booking[nTicket].flight_number, -1);
 	displayBooking(nTicket);
 
 
 }
 
+void change_fare()
+{
+	char fn[10];
+	int fare;
+	printf("Enter flight number: ");
+	scanf("%s",fn);
+	printf("Enter new fare: ");
+	scanf("%d",&fare);
+	updateFare(fn, fare);
+}
 
 int getIndex(char* br)
 {
@@ -291,7 +325,6 @@ char* encrypt(char *array)
 {
     int i;
     int array_size=strlen(array);
-    char newString[strlen(array)];
     char secret[8] = { 22, 53, 44, 71, 66, 177, 253, 122 };
     for(i = 0; i < array_size; i++)
         array[i] = array[i] ^ secret[i];
@@ -318,4 +351,7 @@ bool checkPass()
 	return true;
 	fclose(fp);
 }
+
+
+
 #endif /* BOOKING_H_ */
