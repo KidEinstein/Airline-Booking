@@ -1,2 +1,1 @@
-1,Bangalore,Mumbai,Indigo,6E449,14:49,15:30,9500,49
-2,Bangalore,Mumbai,Spice Jet,SG123,14:20,16:30,40000,33
+1,london,paris,lp123,lil,12:00,14:00,20,973

@@ -6,12 +6,12 @@ int main()
 {
 	startBooking();
 	int choice_user,choice, ch;
+	readFile();
 	while(true)
 	{
 		printf("Enter\n 1. Administrator\n 2. User\n 3. Exit\n");
 		scanf("%d", &choice);
 		scanf("%*c");
-
 		switch(choice)
 		{
 		case 1:

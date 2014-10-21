@@ -1,4 +1,6 @@
-Bangalore,Delhi,Air India,AI624,08:00,10:00,10000,90
-Bangalore,Mumbai,Indigo,6E449,14:49,15:30,9500,456
-Jaipur,Bangalore,Go Air,IX345,10:30,12:30,123,1112
-Bangalore,Mumbai,Spice Jet,SG123,14:20,16:30,40000,33
+Bangalore,Delhi,Air India,AI624,08:00,10:00,10000,        90
+Bangalore,Mumbai,Indigo,6E449,14:49,14:51        10,       474
+Jaipur,Bangalore,Go Air,IX345,10:30,12:30,123,      1112
+Bangalore,Mumbai,Spice Jet,SG123,14:20,1        -1,       120
+apple,mango,khatara,kh123,12:00,13:00,101,       765
+london,paris,lp123,lil,12:00,14:00,       213,        10

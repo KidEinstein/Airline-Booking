@@ -15,7 +15,7 @@ typedef enum { false, true } bool;
 
 int bookedCount=0;
 int nTicket=-1;
-int capacity=5;
+int capacity=20;
 typedef struct
 {
 	char passenger_name[30];
@@ -27,7 +27,6 @@ typedef struct
 	char dep_time[10];
 	char arr_time[10];
 	char booking_reference[20];
-	int dummy;
 	int fare;
 
 
@@ -116,6 +115,10 @@ int count(int n)
 	}
 	return i;
 }
+void remove_newline(char* a)
+{
+	a[strlen(a)-1]='\0';
+}
 void updateSeats(char* fn, int new_seatAvail)
 {
 	char ffn[10];
@@ -126,16 +129,18 @@ void updateSeats(char* fn, int new_seatAvail)
 		if(strcmp(ffn,fn)==0)
 		{
 			flag=1;
-			fseek(fi, -count(seatAvail), SEEK_CUR);
+			fseek(fi, -10, SEEK_CUR);
 			if(new_seatAvail==-1)
-				fprintf(fi, "%d", --seatAvail);
+				fprintf(fi, "%10d", --seatAvail);
 			else
-				fprintf(fi, "%d", new_seatAvail);
+				fprintf(fi, "%10d", new_seatAvail);
 			//printf("%d\n",seatAvail);
+			fclose(fi);
+			return;
 		}
 	}
-	if(flag==0)
-		printf("Flight not found\n");
+
+	printf("Flight not found\n");
 	fclose(fi);
 }
 bool isSeatAvailable(int n)
@@ -184,12 +189,13 @@ void updateFare(char* fn, int new_fare)
 		if(strcmp(ffn,fn)==0)
 		{
 
-			fseek(fi, -count(seatAvail)-1-count(ffare), SEEK_CUR);
+			fseek(fi, -21, SEEK_CUR);
 			if(new_fare==-1&&seatAvail==10)
-				fprintf(fi, "%d,%d", 2*ffare,seatAvail);
+				fprintf(fi, "%10d,%10d", 2*ffare,seatAvail);
 			else
-				fprintf(fi, "%d,%d", new_fare,seatAvail);
+				fprintf(fi, "%10d,%10d", new_fare,seatAvail);
 			//printf("%d\n",seatAvail);
+			fclose(fi);
 			return;
 		}
 	}
@@ -200,7 +206,9 @@ void updateFare(char* fn, int new_fare)
 void newBooking()
 {
 	int choice;
-
+	FILE *fb;
+	int size=sizeof(ticket);
+	fb =  fopen("src/bookings.dat", "a+b");
 	if(nTicket==capacity)
 	{
 		capacity*=2;
@@ -227,13 +235,15 @@ void newBooking()
 	printf("Enter passenger name: ");
 	fgets(booking[nTicket].passenger_name, sizeof(booking[nTicket].passenger_name), stdin);
 	//printf("Fare is %d and nTicket is %d", booking[nTicket].fare, nTicket);
+	remove_newline(booking[nTicket].passenger_name);
 	printf("Enter date: ");
 	fgets(booking[nTicket].date, sizeof(booking[nTicket].date), stdin);
+	remove_newline(booking[nTicket].date);
 	gen_reference(booking[nTicket].booking_reference,10);
 	updateSeats(booking[nTicket].flight_number, -1);
-	updateFare(booking[nTicket].flight_number, -1);
 	displayBooking(nTicket);
-
+	fwrite(&booking[nTicket], size, 1, fb);
+	fclose(fb);
 
 }
 
@@ -276,12 +286,10 @@ void findBooking()
 
 }
 
-void remove_newline(char* a)
-{
-	a[strlen(a)-1]='\0';
-}
+
 void addFlight()
 {
+
 	fi=fopen("src/flights.txt", "a+");
 	char depf[20], desf[20], fn[10], dep_t[10], arr_t[10], al[20];
 	int faref, seatAvail;
@@ -307,7 +315,7 @@ void addFlight()
 	scanf("%d",&faref);
 	printf("Enter available seats: ");
 	scanf("%d",&seatAvail);
-	fprintf(fi,"%s,%s,%s,%s,%s,%s,%d,%d\n", depf, desf, al, fn, dep_t, arr_t, faref, seatAvail);
+	fprintf(fi,"%s,%s,%s,%s,%s,%s,%10d,%10d\n", depf, desf, al, fn, dep_t, arr_t, faref, seatAvail);
 	fclose(fi);
 }
 
@@ -352,6 +360,17 @@ bool checkPass()
 	fclose(fp);
 }
 
+void readFile()
+{
+	FILE *fb;
+	fb =  fopen("src/bookings.dat","r");
+	int size=sizeof(ticket);
+
+	while(fread(&booking[++nTicket], size, 1, fb)==1)
+	printf("Number read %d",nTicket);
+	fclose(fb);
+
+}
 
 
 #endif /* BOOKING_H_ */
