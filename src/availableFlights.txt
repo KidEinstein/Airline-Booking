@@ -1,1 +1,1 @@
-1,london,paris,lp123,lil,12:00,14:00,20,973
+1,Bangalore,Delhi,Air India,AI624,08:00,10:00,10000,90

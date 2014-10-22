@@ -28,6 +28,7 @@ typedef struct
 	char arr_time[10];
 	char booking_reference[20];
 	int fare;
+	bool active;
 
 
 }ticket;
@@ -35,10 +36,41 @@ typedef struct
 ticket *booking;
 FILE* fo;
 FILE* fi;
+void increaseCapacity()
+{
+	if(nTicket==capacity)
+		{
+			capacity*=2;
+			booking=(ticket*)realloc(booking, capacity*sizeof(ticket));
+		}
+}
+void rewriteFile()
+{
+	FILE* fb;
+	fb=fopen("src/bookings.dat","w+");
+	int size=sizeof(ticket);
+	int i=0;
+	for(i=0;i<=nTicket;i++)
+		fwrite(&booking[i], size, 1, fb);
+	fclose(fb);
+}
+void readFile()
+{
+	FILE *fb;
+	fb =  fopen("src/bookings.dat","r");
+	int size=sizeof(ticket);
 
+	while(fread(&booking[++nTicket], size, 1, fb)==1)
+		increaseCapacity();
+	--nTicket;
+	printf("Number read %d",nTicket);
+	fclose(fb);
+
+}
 void startBooking()
 {
 	booking = (ticket*)malloc(capacity * sizeof(ticket));
+	readFile();
 }
 
 void gen_reference(char *s, int len) {
@@ -209,11 +241,7 @@ void newBooking()
 	FILE *fb;
 	int size=sizeof(ticket);
 	fb =  fopen("src/bookings.dat", "a+b");
-	if(nTicket==capacity)
-	{
-		capacity*=2;
-		booking=(ticket*)realloc(booking, capacity*sizeof(ticket));
-	}
+	increaseCapacity();
 	++nTicket;
 	printf("Enter departure city: ");
 	scanf("%s", booking[nTicket].departure_city);
@@ -240,6 +268,7 @@ void newBooking()
 	fgets(booking[nTicket].date, sizeof(booking[nTicket].date), stdin);
 	remove_newline(booking[nTicket].date);
 	gen_reference(booking[nTicket].booking_reference,10);
+	booking[nTicket].active=true;
 	updateSeats(booking[nTicket].flight_number, -1);
 	displayBooking(nTicket);
 	fwrite(&booking[nTicket], size, 1, fb);
@@ -263,7 +292,7 @@ int getIndex(char* br)
 	int i=0;
 	for(i=0;i<=nTicket;i++)
 	{
-		if(strcmp(booking[i].booking_reference,br)==0)
+		if(strcmp(booking[i].booking_reference,br)==0 && booking[i].active==true)
 		{
 			return i;
 		}
@@ -286,7 +315,19 @@ void findBooking()
 
 }
 
-
+void deleteBooking()
+{
+	int index;
+	char book_ref[20];
+	printf("Enter booking reference: ");
+	scanf("%s", book_ref);
+	index=getIndex(book_ref);
+	if(index==-1)
+		printf("Booking not found");
+	else
+		booking[index].active=false;
+	rewriteFile();
+}
 void addFlight()
 {
 
@@ -360,17 +401,7 @@ bool checkPass()
 	fclose(fp);
 }
 
-void readFile()
-{
-	FILE *fb;
-	fb =  fopen("src/bookings.dat","r");
-	int size=sizeof(ticket);
 
-	while(fread(&booking[++nTicket], size, 1, fb)==1)
-	printf("Number read %d",nTicket);
-	fclose(fb);
-
-}
 
 
 #endif /* BOOKING_H_ */
