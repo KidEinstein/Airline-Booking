@@ -1,1 +1,2 @@
-1,Bangalore,Delhi,Air India,AI624,08:00,10:00,10000,90
+1,Bangalore,Mumbai,Indigo,6E449,14:49,14:51,10,471
+2,Bangalore,Mumbai,Spice Jet,SG123,14:20,15:11,12,119

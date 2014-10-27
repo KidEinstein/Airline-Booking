@@ -63,7 +63,7 @@ void readFile()
 	while(fread(&booking[++nTicket], size, 1, fb)==1)
 		increaseCapacity();
 	--nTicket;
-	printf("Number read %d",nTicket);
+	//printf("Number read %d",nTicket);
 	fclose(fb);
 
 }
