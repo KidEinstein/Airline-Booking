@@ -112,16 +112,17 @@ bool displayFlight(char dep[], char des[])
 		{
 			flag=1;
 			printf("%d %s %s %s %s %s %s %d\n", ++i, depf, desf, al, fn, dep_t, arr_t, faref);
-			fprintf(fo,"%d,%s,%s,%s,%s,%s,%s,%d,%d\n", i, depf, desf, al, fn, dep_t, arr_t, faref, seatAvail);
+			fprintf(fo, "%d,%s,%s,%s,%s,%s,%s,%d,%d\n", i, depf, desf, al, fn, dep_t, arr_t, faref, seatAvail);
 		}
 	}
+	fclose(fo);
 	if(flag==0)
 		return false;
 	else
 		return true;
 
 
-	fclose(fo);
+
 }
 void feedDetails(int choice)
 {
@@ -256,7 +257,7 @@ void newBooking()
 	scanf("%s", booking[nTicket].departure_city);
 	printf("Enter destination city: ");
 	scanf("%s", booking[nTicket].destination_city);
-	if(!displayFlight(booking[nTicket].departure_city, booking[nTicket].destination_city))
+	displayFlight(booking[nTicket].departure_city, booking[nTicket].destination_city);
 	{
 		printf("No flight found\n");
 		return;
