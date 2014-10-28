@@ -3,3 +3,4 @@ Bangalore,Mumbai,Indigo,6E449,14:49,14:51,       999,       470
 Jaipur,Bangalore,Go Air,IX345,10:30,12:30,       123,      1111
 Bangalore,Mumbai,Spice Jet,SG123,14:20,15:11,        12,       119
 London,Paris,Emirates,EM123,12:00,13:00,     10000,       122
+France,Brazil,Air France,FB123,13:0,14:00,     12343,       123
