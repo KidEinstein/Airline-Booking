@@ -29,6 +29,8 @@ typedef struct
 	char booking_reference[20];
 	int fare;
 	bool active;
+	struct tm dep;
+	struct tm arr;
 
 
 }ticket;
@@ -110,7 +112,7 @@ bool displayFlight(char dep[], char des[])
 		{
 			flag=1;
 			printf("%d %s %s %s %s %s %s %d\n", ++i, depf, desf, al, fn, dep_t, arr_t, faref);
-			fprintf(fo, "%d,%s,%s,%s,%s,%s,%s,%d,%d\n", i, depf, desf, al, fn, dep_t, arr_t, faref, seatAvail);
+			fprintf(fo,"%d,%s,%s,%s,%s,%s,%s,%d,%d\n", i, depf, desf, al, fn, dep_t, arr_t, faref, seatAvail);
 		}
 	}
 	if(flag==0)
@@ -213,6 +215,7 @@ void displayBooking(int x)
 	printf("Departure Time: %s\n", booking[x].dep_time);
 	printf("Arrival Time: %s\n", booking[x].arr_time);
 	printf("Fare: %d\n", booking[x].fare);
+	printf("Departure Time: ", asctime(&booking[x].dep));
 	fclose(fi);
 
 }
@@ -274,8 +277,9 @@ void newBooking()
 	fgets(booking[nTicket].passenger_name, sizeof(booking[nTicket].passenger_name), stdin);
 	//printf("Fare is %d and nTicket is %d", booking[nTicket].fare, nTicket);
 	remove_newline(booking[nTicket].passenger_name);
-	printf("Enter date: ");
-	fgets(booking[nTicket].date, sizeof(booking[nTicket].date), stdin);
+	printf("Enter date as dd:mm:yyyy");
+	scanf("%d:%d:%d",&booking[nTicket].dep.tm_mday,&booking[nTicket].dep.tm_mon,&booking[nTicket].dep.tm_year);
+	//fgets(booking[nTicket].date, sizeof(booking[nTicket].date), stdin);
 	remove_newline(booking[nTicket].date);
 	gen_reference(booking[nTicket].booking_reference,10);
 	booking[nTicket].active=true;
