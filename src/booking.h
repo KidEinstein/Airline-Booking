@@ -1,9 +1,3 @@
-/*
- * booking.h
- *
- *  Created on: 14-Oct-2014
- *      Author: anirudh
- */
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -29,8 +23,6 @@ typedef struct
 	char booking_reference[20];
 	int fare;
 	bool active;
-	struct tm dep;
-	struct tm arr;
 
 
 }ticket;
@@ -92,11 +84,11 @@ void gen_reference(char *s, int len) {
     strcat(s, temp);
 }
 
-bool displayFlight(char dep[], char des[])
+void displayFlight(char dep[], char des[])
 {
 	int seatAvail;
 	char depf[20], desf[20], fn[10], dep_t[10], arr_t[10], al[20];
-	int faref=0,flag=0;
+	int faref=0;
 
 	fi=fopen("src/flights.txt", "r");
 	fo=fopen("src/availableFlights.txt", "w");
@@ -110,16 +102,10 @@ bool displayFlight(char dep[], char des[])
 	{
 		if(strcmp(dep, depf)==0&&strcmp(des, desf)==0)
 		{
-			flag=1;
 			printf("%d %s %s %s %s %s %s %d\n", ++i, depf, desf, al, fn, dep_t, arr_t, faref);
-			fprintf(fo,"%d,%s,%s,%s,%s,%s,%s,%d,%d\n", i, depf, desf, al, fn, dep_t, arr_t, faref, seatAvail);
+			fprintf(fo, "%d,%s,%s,%s,%s,%s,%s,%d,%d\n", i, depf, desf, al, fn, dep_t, arr_t, faref, seatAvail);
 		}
 	}
-	if(flag==0)
-		return false;
-	else
-		return true;
-
 
 	fclose(fo);
 }
@@ -215,7 +201,6 @@ void displayBooking(int x)
 	printf("Departure Time: %s\n", booking[x].dep_time);
 	printf("Arrival Time: %s\n", booking[x].arr_time);
 	printf("Fare: %d\n", booking[x].fare);
-	printf("Departure Time: ", asctime(&booking[x].dep));
 	fclose(fi);
 
 }
@@ -256,11 +241,7 @@ void newBooking()
 	scanf("%s", booking[nTicket].departure_city);
 	printf("Enter destination city: ");
 	scanf("%s", booking[nTicket].destination_city);
-	if(!displayFlight(booking[nTicket].departure_city, booking[nTicket].destination_city))
-	{
-		printf("No flight found\n");
-		return;
-	}
+	displayFlight(booking[nTicket].departure_city, booking[nTicket].destination_city);
 	printf("Select flight: ");
 	scanf("%d",&choice);
 	if(isSeatAvailable(choice)==false)
@@ -277,9 +258,8 @@ void newBooking()
 	fgets(booking[nTicket].passenger_name, sizeof(booking[nTicket].passenger_name), stdin);
 	//printf("Fare is %d and nTicket is %d", booking[nTicket].fare, nTicket);
 	remove_newline(booking[nTicket].passenger_name);
-	printf("Enter date as dd:mm:yyyy");
-	scanf("%d:%d:%d",&booking[nTicket].dep.tm_mday,&booking[nTicket].dep.tm_mon,&booking[nTicket].dep.tm_year);
-	//fgets(booking[nTicket].date, sizeof(booking[nTicket].date), stdin);
+	printf("Enter date: ");
+	fgets(booking[nTicket].date, sizeof(booking[nTicket].date), stdin);
 	remove_newline(booking[nTicket].date);
 	gen_reference(booking[nTicket].booking_reference,10);
 	booking[nTicket].active=true;
@@ -419,3 +399,4 @@ bool checkPass()
 
 
 #endif /* BOOKING_H_ */
+
