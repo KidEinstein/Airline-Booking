@@ -90,11 +90,11 @@ void gen_reference(char *s, int len) {
     strcat(s, temp);
 }
 
-void displayFlight(char dep[], char des[])
+bool displayFlight(char dep[], char des[])
 {
 	int seatAvail;
 	char depf[20], desf[20], fn[10], dep_t[10], arr_t[10], al[20];
-	int faref=0;
+	int faref=0,flag=0;
 
 	fi=fopen("src/flights.txt", "r");
 	fo=fopen("src/availableFlights.txt", "w");
@@ -108,10 +108,16 @@ void displayFlight(char dep[], char des[])
 	{
 		if(strcmp(dep, depf)==0&&strcmp(des, desf)==0)
 		{
+			flag=1;
 			printf("%d %s %s %s %s %s %s %d\n", ++i, depf, desf, al, fn, dep_t, arr_t, faref);
 			fprintf(fo, "%d,%s,%s,%s,%s,%s,%s,%d,%d\n", i, depf, desf, al, fn, dep_t, arr_t, faref, seatAvail);
 		}
 	}
+	if(flag==0)
+		return false;
+	else
+		return true;
+
 
 	fclose(fo);
 }
@@ -247,7 +253,11 @@ void newBooking()
 	scanf("%s", booking[nTicket].departure_city);
 	printf("Enter destination city: ");
 	scanf("%s", booking[nTicket].destination_city);
-	displayFlight(booking[nTicket].departure_city, booking[nTicket].destination_city);
+	if(!displayFlight(booking[nTicket].departure_city, booking[nTicket].destination_city))
+	{
+		printf("No flight found\n");
+		return;
+	}
 	printf("Select flight: ");
 	scanf("%d",&choice);
 	if(isSeatAvailable(choice)==false)
