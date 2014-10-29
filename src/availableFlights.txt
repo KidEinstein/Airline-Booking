@@ -1,2 +1,2 @@
-1,Bangalore,Mumbai,Indigo,6E449,14:49,14:51,999,461
+1,Bangalore,Mumbai,Indigo,6E449,14:49,14:51,999,459
 2,Bangalore,Mumbai,Spice Jet,SG123,14:20,15:11,12,119

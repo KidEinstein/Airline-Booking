@@ -207,6 +207,7 @@ bool isSeatAvailable(int n)
 
 void displayBooking(int x)
 {
+	long num_seconds,minutes,hours,days;
 	//printf("Fare is %d and nTicket is %d", booking[nTicket].fare, nTicket);
 	printf("Booking Reference: %s\n", booking[x].booking_reference);
 	printf("Passenger Name: %s", booking[x].passenger_name);
@@ -220,7 +221,15 @@ void displayBooking(int x)
 	printf("Fare: %d\n", booking[x].fare);
 	printf("Departure Time: %s", asctime(&booking[x].dep));
 	printf("Arrival Time: %s", asctime(&booking[x].dep));
-	fclose(fi);
+	num_seconds=difftime(mktime(&booking[x].dep),time(NULL));
+	days = num_seconds / (60 * 60 * 24);
+	num_seconds -= days * (60 * 60 * 24);
+	hours = num_seconds / (60 * 60);
+	num_seconds -= hours * (60 * 60);
+	minutes = num_seconds / 60;
+	num_seconds -= minutes*60;
+	printf("Time left: %ld days %ld hours %ld minutes %ld seconds\n", days,hours,minutes,num_seconds);
+
 
 }
 
