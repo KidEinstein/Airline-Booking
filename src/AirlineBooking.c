@@ -35,7 +35,7 @@ int main()
 			break;
 		case 2:
 
-			printf("Enter\n 1. New Booking\n 2. Display Booking\n 3. Delete Booking\n");
+			printf("Enter\n 1. New Booking\n 2. Display Booking\n 3. Delete Booking");
 			scanf("%d",&choice_user);
 			switch(choice_user)
 			{
