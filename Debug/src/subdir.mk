@@ -6,6 +6,9 @@
 C_SRCS += \
 ../src/AirlineBooking.c 
 
+O_SRCS += \
+../src/AirlineBooking.o 
+
 OBJS += \
 ./src/AirlineBooking.o 
 
