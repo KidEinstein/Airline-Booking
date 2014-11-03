@@ -1,1 +1,1 @@
-1,Jaipur,Bangalore,Go Air,IX345,10:30,12:30,123,1111
+1,Bangalore,Delhi,Air India,AI624,08:00,10:00,10000,90

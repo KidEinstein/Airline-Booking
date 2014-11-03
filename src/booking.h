@@ -36,7 +36,6 @@ typedef struct
 ticket *booking;
 FILE* fo;
 FILE* fi;
-//Increases capacity of structure array "booking" once capacity is utilized
 void increaseCapacity()
 {
 	if(nTicket==capacity)
@@ -45,7 +44,6 @@ void increaseCapacity()
 			booking=(ticket*)realloc(booking, capacity*sizeof(ticket));
 		}
 }
-//Rewrites the file containing the bookings after deleting a booking (changes active to false)
 void rewriteFile()
 {
 	FILE* fb;
@@ -56,7 +54,6 @@ void rewriteFile()
 		fwrite(&booking[i], size, 1, fb);
 	fclose(fb);
 }
-//
 void readFile()
 {
 	FILE *fb;
@@ -66,18 +63,16 @@ void readFile()
 	while(fread(&booking[++nTicket], size, 1, fb)==1)
 		increaseCapacity();
 	--nTicket;
-	//printf("Number read %d",nTicket);
+	printf("Number read %d",nTicket);
 	fclose(fb);
 
 }
-
 void startBooking()
 {
 	booking = (ticket*)malloc(capacity * sizeof(ticket));
 	readFile();
 }
 
-//Generates a random reference number associated with each booking
 void gen_reference(char *s, int len) {
 	srand(time(0));
 	char temp[5];
@@ -94,7 +89,7 @@ void gen_reference(char *s, int len) {
     sprintf(temp,"%d",++bookedCount);
     strcat(s, temp);
 }
-//Displays all the flights available for the entered departure and destination cities
+
 void displayFlight(char dep[], char des[])
 {
 	int seatAvail;
@@ -120,7 +115,6 @@ void displayFlight(char dep[], char des[])
 
 	fclose(fo);
 }
-//Enters details of the booking in the object, according to the choice of the flight entered by the user
 void feedDetails(int choice)
 {
 	int i=0;
@@ -153,13 +147,10 @@ int count(int n)
 	}
 	return i;
 }
-//replaces the trailing newline in the string (added by fgets()) with a null character
 void remove_newline(char* a)
 {
 	a[strlen(a)-1]='\0';
 }
-
-//(admin) modifies the number of seats of the entered flight, in the file flights.txt
 void updateSeats(char* fn, int new_seatAvail)
 {
 	char ffn[10];
@@ -184,7 +175,6 @@ void updateSeats(char* fn, int new_seatAvail)
 	printf("Flight not found\n");
 	fclose(fi);
 }
-//returns true when seats are available for the selected flight, otherwise returns false
 bool isSeatAvailable(int n)
 {
 	int fn=0;
@@ -204,17 +194,16 @@ bool isSeatAvailable(int n)
 	}
 }
 
-//displays all the details of a booking
 void displayBooking(int x)
 {
 	//printf("Fare is %d and nTicket is %d", booking[nTicket].fare, nTicket);
 	printf("Booking Reference: %s\n", booking[x].booking_reference);
-	printf("Passenger Name: %s\n", booking[x].passenger_name);
+	printf("Passenger Name: %s", booking[x].passenger_name);
 	printf("Departure City: %s\n", booking[x].departure_city);
 	printf("Destination City: %s\n", booking[x].destination_city);
 	printf("Airline: %s\n", booking[x].airline);
 	printf("Flight Number: %s\n", booking[x].flight_number);
-	printf("Date: %s\n", booking[x].date);
+	printf("Date: %s", booking[x].date);
 	printf("Departure Time: %s\n", booking[x].dep_time);
 	printf("Arrival Time: %s\n", booking[x].arr_time);
 	printf("Fare: %d\n", booking[x].fare);
@@ -222,7 +211,6 @@ void displayBooking(int x)
 
 }
 
-//(admin) modifies the fare of the entered flight, in the flights.txt file
 void updateFare(char* fn, int new_fare)
 {
 	char ffn[10];
@@ -247,7 +235,6 @@ void updateFare(char* fn, int new_fare)
 	fclose(fi);
 }
 
-//Records a new booking
 void newBooking()
 {
 	int choice;
@@ -289,7 +276,6 @@ void newBooking()
 
 }
 
-//(admin) changes fare for the entered flight number
 void change_fare()
 {
 	char fn[10];
@@ -301,7 +287,6 @@ void change_fare()
 	updateFare(fn, fare);
 }
 
-//Returns index of the booking in the array, corresponding to the booking reference number
 int getIndex(char* br)
 {
 	int i=0;
@@ -314,7 +299,6 @@ int getIndex(char* br)
 	}
 	return -1;
 }
-//Checks whether a booking exists corresponding to the entered booking reference number
 void findBooking()
 {
 	int index;
@@ -323,14 +307,14 @@ void findBooking()
 	scanf("%s",book_ref);
 	index=getIndex(book_ref);
 	if(index==-1)
-		printf("Booking not found\n");
+		printf("Booking not found");
 	else
 	{
 		displayBooking(index);
 	}
 
 }
-//changes the active attribute to false, rendering it deleted
+
 void deleteBooking()
 {
 	int index;
@@ -344,8 +328,6 @@ void deleteBooking()
 		booking[index].active=false;
 	rewriteFile();
 }
-
-//(admin) adds a new flight, entering all the details and storing it in the flights.txt file
 void addFlight()
 {
 
@@ -378,7 +360,6 @@ void addFlight()
 	fclose(fi);
 }
 
-//(admin) Changes seat availability for the entered flight number
 void change_seatAvail()
 {
 	char fn[10];
@@ -389,7 +370,6 @@ void change_seatAvail()
 	scanf("%d",&seatAvail);
 	updateSeats(fn, seatAvail);
 }
-//Gives the encrypted form of admin password
 char* encrypt(char *array)
 {
     int i;
@@ -400,7 +380,6 @@ char* encrypt(char *array)
     //printf("Program : %s",array);
     return array;
 }
-//validates entered password
 bool checkPass()
 {
 	FILE *fp;
