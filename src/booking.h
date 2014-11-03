@@ -423,8 +423,7 @@ bool checkPass()
 	scanf("%s",pass);
 
 	fp=fopen("src/password.txt","r");
-	fscanf(fp,"%s",passf);
-	//printf("File: %s",passf);
+	fgets (passf , 10 , fp);
 	if(strcmp(encrypt(pass),passf)==0)
 		printf("Authentication successful\n");
 	else
@@ -436,7 +435,18 @@ bool checkPass()
 	fclose(fp);
 }
 
+void change_password()
+{
+	FILE *fp;
+	char pass[10];
+	printf("Enter password: ");
+	scanf("%s",pass);
 
+	fp=fopen("src/password.txt","w");
+
+	fprintf(fp,"%s",encrypt(pass));
+	fclose(fp);
+}
 
 
 #endif /* BOOKING_H_ */
