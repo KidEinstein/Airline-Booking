@@ -11,12 +11,13 @@ int main()
 		printf("Enter\n 1. Administrator\n 2. User\n 3. Exit\n");
 		scanf("%d", &choice);
 		scanf("%*c");
+
 		switch(choice)
 		{
 		case 1:
 			if(!checkPass())
 				break;
-			printf("Enter\n 1. Add new flight\n 2. Change seat availability\n 3. Update Fare\n");
+			printf("Enter\n 1. Add new flight\n 2. Change seat availability\n");
 			scanf("%d",&ch);
 			scanf("%*c");
 			switch(ch)
@@ -27,15 +28,11 @@ int main()
 			case 2:
 				change_seatAvail();
 				break;
-			case 3:
-				change_fare();
-				break;
-
 			}
 			break;
 		case 2:
 
-			printf("Enter\n 1. New Booking\n 2. Display Booking\n 3. Delete Booking");
+			printf("Enter\n 1. New Booking\n 2. Display Booking\n");
 			scanf("%d",&choice_user);
 			switch(choice_user)
 			{
@@ -45,9 +42,7 @@ int main()
 			case 2:
 				findBooking();
 				break;
-			case 3:
-				deleteBooking();
-				break;
+
 			}
 			break;
 
