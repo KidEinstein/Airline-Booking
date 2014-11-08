@@ -38,6 +38,11 @@ typedef struct
 ticket *booking;
 FILE* fo;
 FILE* fi;
+/**
+ * Increases the capacity of the structure
+ * Comments don't seem to be working
+ *
+ */
 void increaseCapacity()
 {
 	if(nTicket==capacity)

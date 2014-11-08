@@ -1,0 +1,158 @@
+\hypertarget{structticket}{\section{ticket Struct Reference}
+\label{structticket}\index{ticket@{ticket}}
+}
+
+
+{\ttfamily \#include $<$booking.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{structticket_ac52977b4e30a262ba97c8bd1ac6dbdc9}{passenger\+\_\+name} \mbox{[}30\mbox{]}
+\item 
+char \hyperlink{structticket_a1d6b301226a292359356534054313067}{departure\+\_\+city} \mbox{[}20\mbox{]}
+\item 
+char \hyperlink{structticket_a1dc9ea1dcc21a6c198a5d040ccea89ff}{destination\+\_\+city} \mbox{[}20\mbox{]}
+\item 
+char \hyperlink{structticket_a3acb4e05ce192acb1ef223ec62891725}{airline} \mbox{[}20\mbox{]}
+\item 
+char \hyperlink{structticket_ab8bdf6615eae3d233291ab4be030df2a}{flight\+\_\+number} \mbox{[}10\mbox{]}
+\item 
+char \hyperlink{structticket_ae4d2e27c920650bc6325d0e81cf829d9}{date} \mbox{[}10\mbox{]}
+\item 
+char \hyperlink{structticket_a5551ea610d8edcc9716180b2c97ccde4}{dep\+\_\+time} \mbox{[}10\mbox{]}
+\item 
+char \hyperlink{structticket_af7a1201bf0b204f2be1f257b2c0bde68}{arr\+\_\+time} \mbox{[}10\mbox{]}
+\item 
+char \hyperlink{structticket_adbddfa1cf9fa643c6cea63f5ea3006a4}{booking\+\_\+reference} \mbox{[}20\mbox{]}
+\item 
+int \hyperlink{structticket_af79afaf9c850bee6ec68f883d359c068}{fare}
+\item 
+\hyperlink{booking_8h_af6a258d8f3ee5206d682d799316314b1}{bool} \hyperlink{structticket_a823f183077ae42b41a4f00941da72430}{active}
+\item 
+struct tm \hyperlink{structticket_a4bd2f22d43528cbdd9b4cc1d4ea5754f}{dep}
+\item 
+struct tm \hyperlink{structticket_a7316ad33eb22844503746b7542bb2903}{arr}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 19 of file booking.\+h.
+
+
+
+\subsection{Field Documentation}
+\hypertarget{structticket_a823f183077ae42b41a4f00941da72430}{\index{ticket@{ticket}!active@{active}}
+\index{active@{active}!ticket@{ticket}}
+\subsubsection[{active}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} ticket\+::active}}\label{structticket_a823f183077ae42b41a4f00941da72430}
+
+
+Definition at line 31 of file booking.\+h.
+
+
+
+Referenced by delete\+Booking(), and new\+Booking().
+
+\hypertarget{structticket_a3acb4e05ce192acb1ef223ec62891725}{\index{ticket@{ticket}!airline@{airline}}
+\index{airline@{airline}!ticket@{ticket}}
+\subsubsection[{airline}]{\setlength{\rightskip}{0pt plus 5cm}char ticket\+::airline\mbox{[}20\mbox{]}}}\label{structticket_a3acb4e05ce192acb1ef223ec62891725}
+
+
+Definition at line 24 of file booking.\+h.
+
+\hypertarget{structticket_a7316ad33eb22844503746b7542bb2903}{\index{ticket@{ticket}!arr@{arr}}
+\index{arr@{arr}!ticket@{ticket}}
+\subsubsection[{arr}]{\setlength{\rightskip}{0pt plus 5cm}struct tm ticket\+::arr}}\label{structticket_a7316ad33eb22844503746b7542bb2903}
+
+
+Definition at line 33 of file booking.\+h.
+
+
+
+Referenced by feed\+Details(), and new\+Booking().
+
+\hypertarget{structticket_af7a1201bf0b204f2be1f257b2c0bde68}{\index{ticket@{ticket}!arr\+\_\+time@{arr\+\_\+time}}
+\index{arr\+\_\+time@{arr\+\_\+time}!ticket@{ticket}}
+\subsubsection[{arr\+\_\+time}]{\setlength{\rightskip}{0pt plus 5cm}char ticket\+::arr\+\_\+time\mbox{[}10\mbox{]}}}\label{structticket_af7a1201bf0b204f2be1f257b2c0bde68}
+
+
+Definition at line 28 of file booking.\+h.
+
+\hypertarget{structticket_adbddfa1cf9fa643c6cea63f5ea3006a4}{\index{ticket@{ticket}!booking\+\_\+reference@{booking\+\_\+reference}}
+\index{booking\+\_\+reference@{booking\+\_\+reference}!ticket@{ticket}}
+\subsubsection[{booking\+\_\+reference}]{\setlength{\rightskip}{0pt plus 5cm}char ticket\+::booking\+\_\+reference\mbox{[}20\mbox{]}}}\label{structticket_adbddfa1cf9fa643c6cea63f5ea3006a4}
+
+
+Definition at line 29 of file booking.\+h.
+
+\hypertarget{structticket_ae4d2e27c920650bc6325d0e81cf829d9}{\index{ticket@{ticket}!date@{date}}
+\index{date@{date}!ticket@{ticket}}
+\subsubsection[{date}]{\setlength{\rightskip}{0pt plus 5cm}char ticket\+::date\mbox{[}10\mbox{]}}}\label{structticket_ae4d2e27c920650bc6325d0e81cf829d9}
+
+
+Definition at line 26 of file booking.\+h.
+
+\hypertarget{structticket_a4bd2f22d43528cbdd9b4cc1d4ea5754f}{\index{ticket@{ticket}!dep@{dep}}
+\index{dep@{dep}!ticket@{ticket}}
+\subsubsection[{dep}]{\setlength{\rightskip}{0pt plus 5cm}struct tm ticket\+::dep}}\label{structticket_a4bd2f22d43528cbdd9b4cc1d4ea5754f}
+
+
+Definition at line 32 of file booking.\+h.
+
+
+
+Referenced by feed\+Details(), and new\+Booking().
+
+\hypertarget{structticket_a5551ea610d8edcc9716180b2c97ccde4}{\index{ticket@{ticket}!dep\+\_\+time@{dep\+\_\+time}}
+\index{dep\+\_\+time@{dep\+\_\+time}!ticket@{ticket}}
+\subsubsection[{dep\+\_\+time}]{\setlength{\rightskip}{0pt plus 5cm}char ticket\+::dep\+\_\+time\mbox{[}10\mbox{]}}}\label{structticket_a5551ea610d8edcc9716180b2c97ccde4}
+
+
+Definition at line 27 of file booking.\+h.
+
+\hypertarget{structticket_a1d6b301226a292359356534054313067}{\index{ticket@{ticket}!departure\+\_\+city@{departure\+\_\+city}}
+\index{departure\+\_\+city@{departure\+\_\+city}!ticket@{ticket}}
+\subsubsection[{departure\+\_\+city}]{\setlength{\rightskip}{0pt plus 5cm}char ticket\+::departure\+\_\+city\mbox{[}20\mbox{]}}}\label{structticket_a1d6b301226a292359356534054313067}
+
+
+Definition at line 22 of file booking.\+h.
+
+\hypertarget{structticket_a1dc9ea1dcc21a6c198a5d040ccea89ff}{\index{ticket@{ticket}!destination\+\_\+city@{destination\+\_\+city}}
+\index{destination\+\_\+city@{destination\+\_\+city}!ticket@{ticket}}
+\subsubsection[{destination\+\_\+city}]{\setlength{\rightskip}{0pt plus 5cm}char ticket\+::destination\+\_\+city\mbox{[}20\mbox{]}}}\label{structticket_a1dc9ea1dcc21a6c198a5d040ccea89ff}
+
+
+Definition at line 23 of file booking.\+h.
+
+\hypertarget{structticket_af79afaf9c850bee6ec68f883d359c068}{\index{ticket@{ticket}!fare@{fare}}
+\index{fare@{fare}!ticket@{ticket}}
+\subsubsection[{fare}]{\setlength{\rightskip}{0pt plus 5cm}int ticket\+::fare}}\label{structticket_af79afaf9c850bee6ec68f883d359c068}
+
+
+Definition at line 30 of file booking.\+h.
+
+
+
+Referenced by feed\+Details().
+
+\hypertarget{structticket_ab8bdf6615eae3d233291ab4be030df2a}{\index{ticket@{ticket}!flight\+\_\+number@{flight\+\_\+number}}
+\index{flight\+\_\+number@{flight\+\_\+number}!ticket@{ticket}}
+\subsubsection[{flight\+\_\+number}]{\setlength{\rightskip}{0pt plus 5cm}char ticket\+::flight\+\_\+number\mbox{[}10\mbox{]}}}\label{structticket_ab8bdf6615eae3d233291ab4be030df2a}
+
+
+Definition at line 25 of file booking.\+h.
+
+\hypertarget{structticket_ac52977b4e30a262ba97c8bd1ac6dbdc9}{\index{ticket@{ticket}!passenger\+\_\+name@{passenger\+\_\+name}}
+\index{passenger\+\_\+name@{passenger\+\_\+name}!ticket@{ticket}}
+\subsubsection[{passenger\+\_\+name}]{\setlength{\rightskip}{0pt plus 5cm}char ticket\+::passenger\+\_\+name\mbox{[}30\mbox{]}}}\label{structticket_ac52977b4e30a262ba97c8bd1ac6dbdc9}
+
+
+Definition at line 21 of file booking.\+h.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{booking_8h}{booking.\+h}\end{DoxyCompactItemize}

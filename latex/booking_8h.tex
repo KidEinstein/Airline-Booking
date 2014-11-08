@@ -1,0 +1,587 @@
+\hypertarget{booking_8h}{\section{src/booking.h File Reference}
+\label{booking_8h}\index{src/booking.\+h@{src/booking.\+h}}
+}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structticket}{ticket}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{booking_8h_af6a258d8f3ee5206d682d799316314b1}{bool} \{ \hyperlink{booking_8h_af6a258d8f3ee5206d682d799316314b1ae9de385ef6fe9bf3360d1038396b884c}{false}, 
+\hyperlink{booking_8h_af6a258d8f3ee5206d682d799316314b1a08f175a5505a10b9ed657defeb050e4b}{true}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{booking_8h_a7393cc8662b4c4799c2db47c8c8adf8f}{increase\+Capacity} ()
+\item 
+void \hyperlink{booking_8h_a0d571cd4fd51f58cf22493ea4ec18170}{rewrite\+File} ()
+\item 
+void \hyperlink{booking_8h_a8db989c03e6719d9888dd3ec3d2ef7cc}{read\+File} ()
+\item 
+void \hyperlink{booking_8h_ad88be1614c9ccbe093df46f473cc506a}{start\+Booking} ()
+\item 
+void \hyperlink{booking_8h_acc6b6c3739f0484dc9d8d5e6d161402c}{gen\+\_\+reference} (char $\ast$s, int len)
+\item 
+\hyperlink{booking_8h_af6a258d8f3ee5206d682d799316314b1}{bool} \hyperlink{booking_8h_abc9bc6f097c12071cf29259f13815e26}{display\+Flight} (char dep\mbox{[}$\,$\mbox{]}, char des\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{booking_8h_adf46d26b65f413f0d5a07f17882c826c}{feed\+Details} (int choice)
+\item 
+int \hyperlink{booking_8h_aa924f9ef999c8e33f83eb98e56d31784}{count} (int n)
+\item 
+void \hyperlink{booking_8h_a31fd709a0e6b46aea2b5a7c95007400f}{remove\+\_\+newline} (char $\ast$a)
+\item 
+void \hyperlink{booking_8h_afd304fc13197b152e61e06ddeb3e9f90}{update\+Seats} (char $\ast$fn, int new\+\_\+seat\+Avail)
+\item 
+\hyperlink{booking_8h_af6a258d8f3ee5206d682d799316314b1}{bool} \hyperlink{booking_8h_a0d5bb12b8983bc795d19143b97d59ba2}{is\+Seat\+Available} (int n)
+\item 
+void \hyperlink{booking_8h_a899ce30664a62177a9346df7fd823b18}{display\+Booking} (int x)
+\item 
+void \hyperlink{booking_8h_aa8b24ee866a57f2dab7c6df91d58670e}{update\+Fare} (char $\ast$fn, int new\+\_\+fare)
+\item 
+void \hyperlink{booking_8h_a22c4a7a4d5c69264db7a71b0883e7743}{new\+Booking} ()
+\item 
+void \hyperlink{booking_8h_abd95a435c280990f8e994539b1aa6b67}{change\+\_\+fare} ()
+\item 
+int \hyperlink{booking_8h_a94a09185856dd115e3f87302475f005e}{get\+Index} (char $\ast$br)
+\item 
+void \hyperlink{booking_8h_a16b39c080047511200e18c5fa367061d}{find\+Booking} ()
+\item 
+void \hyperlink{booking_8h_a11f6041e0fa57629e1d72f56e23ff37f}{delete\+Booking} ()
+\item 
+void \hyperlink{booking_8h_a403f832272d4c63af48b112755363380}{add\+Flight} ()
+\item 
+void \hyperlink{booking_8h_abc1757b0a6b059af1010b1ee2f9fdf68}{change\+\_\+seat\+Avail} ()
+\item 
+char $\ast$ \hyperlink{booking_8h_a41cca15eb8bebf50d1b26ccfe87613a4}{encrypt} (char $\ast$array)
+\item 
+\hyperlink{booking_8h_af6a258d8f3ee5206d682d799316314b1}{bool} \hyperlink{booking_8h_ac84f2ee073274a9b814ac581ad20a65f}{check\+Pass} ()
+\item 
+void \hyperlink{booking_8h_a172b316ae297321ab403c77eed060a65}{change\+\_\+password} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{booking_8h_a06a94238926cf837d54e74a66674fe93}{booked\+Count} =0
+\item 
+int \hyperlink{booking_8h_a489752c928f8e184e7775d0e1074e726}{n\+Ticket} =-\/1
+\item 
+int \hyperlink{booking_8h_adbe66a087ac3fd4a5b0566f64ca2d12b}{capacity} =20
+\item 
+\hyperlink{structticket}{ticket} $\ast$ \hyperlink{booking_8h_a43177cd7fff22d7811e1a407e5f1be15}{booking}
+\item 
+F\+I\+L\+E $\ast$ \hyperlink{booking_8h_a477fceed7c21b545abec0f6de33ccb88}{fo}
+\item 
+F\+I\+L\+E $\ast$ \hyperlink{booking_8h_a63ca097217c3ffff749bde57fedda0e2}{fi}
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{booking_8h_af6a258d8f3ee5206d682d799316314b1}{\index{booking.\+h@{booking.\+h}!bool@{bool}}
+\index{bool@{bool}!booking.\+h@{booking.\+h}}
+\subsubsection[{bool}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf bool}}}\label{booking_8h_af6a258d8f3ee5206d682d799316314b1}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{false@{false}!booking.\+h@{booking.\+h}}\index{booking.\+h@{booking.\+h}!false@{false}}\item[{\em 
+\hypertarget{booking_8h_af6a258d8f3ee5206d682d799316314b1ae9de385ef6fe9bf3360d1038396b884c}{false}\label{booking_8h_af6a258d8f3ee5206d682d799316314b1ae9de385ef6fe9bf3360d1038396b884c}
+}]\index{true@{true}!booking.\+h@{booking.\+h}}\index{booking.\+h@{booking.\+h}!true@{true}}\item[{\em 
+\hypertarget{booking_8h_af6a258d8f3ee5206d682d799316314b1a08f175a5505a10b9ed657defeb050e4b}{true}\label{booking_8h_af6a258d8f3ee5206d682d799316314b1a08f175a5505a10b9ed657defeb050e4b}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 14 of file booking.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{booking_8h_a403f832272d4c63af48b112755363380}{\index{booking.\+h@{booking.\+h}!add\+Flight@{add\+Flight}}
+\index{add\+Flight@{add\+Flight}!booking.\+h@{booking.\+h}}
+\subsubsection[{add\+Flight}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Flight (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_a403f832272d4c63af48b112755363380}
+
+
+Definition at line 371 of file booking.\+h.
+
+
+
+References fi, and remove\+\_\+newline().
+
+
+
+Referenced by main().
+
+\hypertarget{booking_8h_abd95a435c280990f8e994539b1aa6b67}{\index{booking.\+h@{booking.\+h}!change\+\_\+fare@{change\+\_\+fare}}
+\index{change\+\_\+fare@{change\+\_\+fare}!booking.\+h@{booking.\+h}}
+\subsubsection[{change\+\_\+fare}]{\setlength{\rightskip}{0pt plus 5cm}void change\+\_\+fare (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_abd95a435c280990f8e994539b1aa6b67}
+
+
+Definition at line 319 of file booking.\+h.
+
+
+
+References update\+Fare().
+
+
+
+Referenced by main().
+
+\hypertarget{booking_8h_a172b316ae297321ab403c77eed060a65}{\index{booking.\+h@{booking.\+h}!change\+\_\+password@{change\+\_\+password}}
+\index{change\+\_\+password@{change\+\_\+password}!booking.\+h@{booking.\+h}}
+\subsubsection[{change\+\_\+password}]{\setlength{\rightskip}{0pt plus 5cm}void change\+\_\+password (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_a172b316ae297321ab403c77eed060a65}
+
+
+Definition at line 443 of file booking.\+h.
+
+
+
+References encrypt().
+
+
+
+Referenced by main().
+
+\hypertarget{booking_8h_abc1757b0a6b059af1010b1ee2f9fdf68}{\index{booking.\+h@{booking.\+h}!change\+\_\+seat\+Avail@{change\+\_\+seat\+Avail}}
+\index{change\+\_\+seat\+Avail@{change\+\_\+seat\+Avail}!booking.\+h@{booking.\+h}}
+\subsubsection[{change\+\_\+seat\+Avail}]{\setlength{\rightskip}{0pt plus 5cm}void change\+\_\+seat\+Avail (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_abc1757b0a6b059af1010b1ee2f9fdf68}
+
+
+Definition at line 403 of file booking.\+h.
+
+
+
+References update\+Seats().
+
+
+
+Referenced by main().
+
+\hypertarget{booking_8h_ac84f2ee073274a9b814ac581ad20a65f}{\index{booking.\+h@{booking.\+h}!check\+Pass@{check\+Pass}}
+\index{check\+Pass@{check\+Pass}!booking.\+h@{booking.\+h}}
+\subsubsection[{check\+Pass}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} check\+Pass (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_ac84f2ee073274a9b814ac581ad20a65f}
+
+
+Definition at line 423 of file booking.\+h.
+
+
+
+References encrypt().
+
+
+
+Referenced by main().
+
+\hypertarget{booking_8h_aa924f9ef999c8e33f83eb98e56d31784}{\index{booking.\+h@{booking.\+h}!count@{count}}
+\index{count@{count}!booking.\+h@{booking.\+h}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}int count (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_aa924f9ef999c8e33f83eb98e56d31784}
+
+
+Definition at line 156 of file booking.\+h.
+
+\hypertarget{booking_8h_a11f6041e0fa57629e1d72f56e23ff37f}{\index{booking.\+h@{booking.\+h}!delete\+Booking@{delete\+Booking}}
+\index{delete\+Booking@{delete\+Booking}!booking.\+h@{booking.\+h}}
+\subsubsection[{delete\+Booking}]{\setlength{\rightskip}{0pt plus 5cm}void delete\+Booking (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_a11f6041e0fa57629e1d72f56e23ff37f}
+
+
+Definition at line 358 of file booking.\+h.
+
+
+
+References ticket\+::active, get\+Index(), and rewrite\+File().
+
+
+
+Referenced by main().
+
+\hypertarget{booking_8h_a899ce30664a62177a9346df7fd823b18}{\index{booking.\+h@{booking.\+h}!display\+Booking@{display\+Booking}}
+\index{display\+Booking@{display\+Booking}!booking.\+h@{booking.\+h}}
+\subsubsection[{display\+Booking}]{\setlength{\rightskip}{0pt plus 5cm}void display\+Booking (
+\begin{DoxyParamCaption}
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_a899ce30664a62177a9346df7fd823b18}
+
+
+Definition at line 213 of file booking.\+h.
+
+
+
+Referenced by find\+Booking(), and new\+Booking().
+
+\hypertarget{booking_8h_abc9bc6f097c12071cf29259f13815e26}{\index{booking.\+h@{booking.\+h}!display\+Flight@{display\+Flight}}
+\index{display\+Flight@{display\+Flight}!booking.\+h@{booking.\+h}}
+\subsubsection[{display\+Flight}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} display\+Flight (
+\begin{DoxyParamCaption}
+\item[{char}]{dep\mbox{[}$\,$\mbox{]}, }
+\item[{char}]{des\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_abc9bc6f097c12071cf29259f13815e26}
+
+
+Definition at line 100 of file booking.\+h.
+
+
+
+References fi, and fo.
+
+
+
+Referenced by new\+Booking().
+
+\hypertarget{booking_8h_a41cca15eb8bebf50d1b26ccfe87613a4}{\index{booking.\+h@{booking.\+h}!encrypt@{encrypt}}
+\index{encrypt@{encrypt}!booking.\+h@{booking.\+h}}
+\subsubsection[{encrypt}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ encrypt (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{array}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_a41cca15eb8bebf50d1b26ccfe87613a4}
+
+
+Definition at line 413 of file booking.\+h.
+
+
+
+Referenced by change\+\_\+password(), and check\+Pass().
+
+\hypertarget{booking_8h_adf46d26b65f413f0d5a07f17882c826c}{\index{booking.\+h@{booking.\+h}!feed\+Details@{feed\+Details}}
+\index{feed\+Details@{feed\+Details}!booking.\+h@{booking.\+h}}
+\subsubsection[{feed\+Details}]{\setlength{\rightskip}{0pt plus 5cm}void feed\+Details (
+\begin{DoxyParamCaption}
+\item[{int}]{choice}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_adf46d26b65f413f0d5a07f17882c826c}
+
+
+Definition at line 130 of file booking.\+h.
+
+
+
+References ticket\+::arr, ticket\+::dep, ticket\+::fare, fo, and n\+Ticket.
+
+
+
+Referenced by new\+Booking().
+
+\hypertarget{booking_8h_a16b39c080047511200e18c5fa367061d}{\index{booking.\+h@{booking.\+h}!find\+Booking@{find\+Booking}}
+\index{find\+Booking@{find\+Booking}!booking.\+h@{booking.\+h}}
+\subsubsection[{find\+Booking}]{\setlength{\rightskip}{0pt plus 5cm}void find\+Booking (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_a16b39c080047511200e18c5fa367061d}
+
+
+Definition at line 342 of file booking.\+h.
+
+
+
+References display\+Booking(), and get\+Index().
+
+
+
+Referenced by main().
+
+\hypertarget{booking_8h_acc6b6c3739f0484dc9d8d5e6d161402c}{\index{booking.\+h@{booking.\+h}!gen\+\_\+reference@{gen\+\_\+reference}}
+\index{gen\+\_\+reference@{gen\+\_\+reference}!booking.\+h@{booking.\+h}}
+\subsubsection[{gen\+\_\+reference}]{\setlength{\rightskip}{0pt plus 5cm}void gen\+\_\+reference (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{int}]{len}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_acc6b6c3739f0484dc9d8d5e6d161402c}
+
+
+Definition at line 83 of file booking.\+h.
+
+
+
+References booked\+Count.
+
+
+
+Referenced by new\+Booking().
+
+\hypertarget{booking_8h_a94a09185856dd115e3f87302475f005e}{\index{booking.\+h@{booking.\+h}!get\+Index@{get\+Index}}
+\index{get\+Index@{get\+Index}!booking.\+h@{booking.\+h}}
+\subsubsection[{get\+Index}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Index (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{br}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_a94a09185856dd115e3f87302475f005e}
+
+
+Definition at line 330 of file booking.\+h.
+
+
+
+References n\+Ticket.
+
+
+
+Referenced by delete\+Booking(), and find\+Booking().
+
+\hypertarget{booking_8h_a7393cc8662b4c4799c2db47c8c8adf8f}{\index{booking.\+h@{booking.\+h}!increase\+Capacity@{increase\+Capacity}}
+\index{increase\+Capacity@{increase\+Capacity}!booking.\+h@{booking.\+h}}
+\subsubsection[{increase\+Capacity}]{\setlength{\rightskip}{0pt plus 5cm}void increase\+Capacity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_a7393cc8662b4c4799c2db47c8c8adf8f}
+Increases the capacity of the structure Comments don't seem to be working 
+
+Definition at line 46 of file booking.\+h.
+
+
+
+References capacity, and n\+Ticket.
+
+
+
+Referenced by new\+Booking(), and read\+File().
+
+\hypertarget{booking_8h_a0d5bb12b8983bc795d19143b97d59ba2}{\index{booking.\+h@{booking.\+h}!is\+Seat\+Available@{is\+Seat\+Available}}
+\index{is\+Seat\+Available@{is\+Seat\+Available}!booking.\+h@{booking.\+h}}
+\subsubsection[{is\+Seat\+Available}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} is\+Seat\+Available (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_a0d5bb12b8983bc795d19143b97d59ba2}
+
+
+Definition at line 194 of file booking.\+h.
+
+
+
+References fo.
+
+\hypertarget{booking_8h_a22c4a7a4d5c69264db7a71b0883e7743}{\index{booking.\+h@{booking.\+h}!new\+Booking@{new\+Booking}}
+\index{new\+Booking@{new\+Booking}!booking.\+h@{booking.\+h}}
+\subsubsection[{new\+Booking}]{\setlength{\rightskip}{0pt plus 5cm}void new\+Booking (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_a22c4a7a4d5c69264db7a71b0883e7743}
+
+
+Definition at line 265 of file booking.\+h.
+
+
+
+References ticket\+::active, ticket\+::arr, ticket\+::dep, display\+Booking(), display\+Flight(), feed\+Details(), gen\+\_\+reference(), increase\+Capacity(), n\+Ticket, remove\+\_\+newline(), and update\+Seats().
+
+
+
+Referenced by main().
+
+\hypertarget{booking_8h_a8db989c03e6719d9888dd3ec3d2ef7cc}{\index{booking.\+h@{booking.\+h}!read\+File@{read\+File}}
+\index{read\+File@{read\+File}!booking.\+h@{booking.\+h}}
+\subsubsection[{read\+File}]{\setlength{\rightskip}{0pt plus 5cm}void read\+File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_a8db989c03e6719d9888dd3ec3d2ef7cc}
+
+
+Definition at line 64 of file booking.\+h.
+
+
+
+References increase\+Capacity(), and n\+Ticket.
+
+
+
+Referenced by start\+Booking().
+
+\hypertarget{booking_8h_a31fd709a0e6b46aea2b5a7c95007400f}{\index{booking.\+h@{booking.\+h}!remove\+\_\+newline@{remove\+\_\+newline}}
+\index{remove\+\_\+newline@{remove\+\_\+newline}!booking.\+h@{booking.\+h}}
+\subsubsection[{remove\+\_\+newline}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+\_\+newline (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{a}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_a31fd709a0e6b46aea2b5a7c95007400f}
+
+
+Definition at line 166 of file booking.\+h.
+
+
+
+Referenced by add\+Flight(), and new\+Booking().
+
+\hypertarget{booking_8h_a0d571cd4fd51f58cf22493ea4ec18170}{\index{booking.\+h@{booking.\+h}!rewrite\+File@{rewrite\+File}}
+\index{rewrite\+File@{rewrite\+File}!booking.\+h@{booking.\+h}}
+\subsubsection[{rewrite\+File}]{\setlength{\rightskip}{0pt plus 5cm}void rewrite\+File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_a0d571cd4fd51f58cf22493ea4ec18170}
+
+
+Definition at line 54 of file booking.\+h.
+
+
+
+References n\+Ticket.
+
+
+
+Referenced by delete\+Booking().
+
+\hypertarget{booking_8h_ad88be1614c9ccbe093df46f473cc506a}{\index{booking.\+h@{booking.\+h}!start\+Booking@{start\+Booking}}
+\index{start\+Booking@{start\+Booking}!booking.\+h@{booking.\+h}}
+\subsubsection[{start\+Booking}]{\setlength{\rightskip}{0pt plus 5cm}void start\+Booking (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_ad88be1614c9ccbe093df46f473cc506a}
+
+
+Definition at line 77 of file booking.\+h.
+
+
+
+References capacity, and read\+File().
+
+
+
+Referenced by main().
+
+\hypertarget{booking_8h_aa8b24ee866a57f2dab7c6df91d58670e}{\index{booking.\+h@{booking.\+h}!update\+Fare@{update\+Fare}}
+\index{update\+Fare@{update\+Fare}!booking.\+h@{booking.\+h}}
+\subsubsection[{update\+Fare}]{\setlength{\rightskip}{0pt plus 5cm}void update\+Fare (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{fn, }
+\item[{int}]{new\+\_\+fare}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_aa8b24ee866a57f2dab7c6df91d58670e}
+
+
+Definition at line 241 of file booking.\+h.
+
+
+
+References fi.
+
+
+
+Referenced by change\+\_\+fare().
+
+\hypertarget{booking_8h_afd304fc13197b152e61e06ddeb3e9f90}{\index{booking.\+h@{booking.\+h}!update\+Seats@{update\+Seats}}
+\index{update\+Seats@{update\+Seats}!booking.\+h@{booking.\+h}}
+\subsubsection[{update\+Seats}]{\setlength{\rightskip}{0pt plus 5cm}void update\+Seats (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{fn, }
+\item[{int}]{new\+\_\+seat\+Avail}
+\end{DoxyParamCaption}
+)}}\label{booking_8h_afd304fc13197b152e61e06ddeb3e9f90}
+
+
+Definition at line 170 of file booking.\+h.
+
+
+
+References fi.
+
+
+
+Referenced by change\+\_\+seat\+Avail(), and new\+Booking().
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{booking_8h_a06a94238926cf837d54e74a66674fe93}{\index{booking.\+h@{booking.\+h}!booked\+Count@{booked\+Count}}
+\index{booked\+Count@{booked\+Count}!booking.\+h@{booking.\+h}}
+\subsubsection[{booked\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int booked\+Count =0}}\label{booking_8h_a06a94238926cf837d54e74a66674fe93}
+
+
+Definition at line 16 of file booking.\+h.
+
+
+
+Referenced by gen\+\_\+reference().
+
+\hypertarget{booking_8h_a43177cd7fff22d7811e1a407e5f1be15}{\index{booking.\+h@{booking.\+h}!booking@{booking}}
+\index{booking@{booking}!booking.\+h@{booking.\+h}}
+\subsubsection[{booking}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ticket}$\ast$ booking}}\label{booking_8h_a43177cd7fff22d7811e1a407e5f1be15}
+
+
+Definition at line 38 of file booking.\+h.
+
+\hypertarget{booking_8h_adbe66a087ac3fd4a5b0566f64ca2d12b}{\index{booking.\+h@{booking.\+h}!capacity@{capacity}}
+\index{capacity@{capacity}!booking.\+h@{booking.\+h}}
+\subsubsection[{capacity}]{\setlength{\rightskip}{0pt plus 5cm}int capacity =20}}\label{booking_8h_adbe66a087ac3fd4a5b0566f64ca2d12b}
+
+
+Definition at line 18 of file booking.\+h.
+
+
+
+Referenced by increase\+Capacity(), and start\+Booking().
+
+\hypertarget{booking_8h_a63ca097217c3ffff749bde57fedda0e2}{\index{booking.\+h@{booking.\+h}!fi@{fi}}
+\index{fi@{fi}!booking.\+h@{booking.\+h}}
+\subsubsection[{fi}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ fi}}\label{booking_8h_a63ca097217c3ffff749bde57fedda0e2}
+
+
+Definition at line 40 of file booking.\+h.
+
+
+
+Referenced by add\+Flight(), display\+Flight(), update\+Fare(), and update\+Seats().
+
+\hypertarget{booking_8h_a477fceed7c21b545abec0f6de33ccb88}{\index{booking.\+h@{booking.\+h}!fo@{fo}}
+\index{fo@{fo}!booking.\+h@{booking.\+h}}
+\subsubsection[{fo}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ fo}}\label{booking_8h_a477fceed7c21b545abec0f6de33ccb88}
+
+
+Definition at line 39 of file booking.\+h.
+
+
+
+Referenced by display\+Flight(), feed\+Details(), and is\+Seat\+Available().
+
+\hypertarget{booking_8h_a489752c928f8e184e7775d0e1074e726}{\index{booking.\+h@{booking.\+h}!n\+Ticket@{n\+Ticket}}
+\index{n\+Ticket@{n\+Ticket}!booking.\+h@{booking.\+h}}
+\subsubsection[{n\+Ticket}]{\setlength{\rightskip}{0pt plus 5cm}int n\+Ticket =-\/1}}\label{booking_8h_a489752c928f8e184e7775d0e1074e726}
+
+
+Definition at line 17 of file booking.\+h.
+
+
+
+Referenced by feed\+Details(), get\+Index(), increase\+Capacity(), new\+Booking(), read\+File(), and rewrite\+File().
+
