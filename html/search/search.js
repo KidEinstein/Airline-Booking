@@ -13,7 +13,8 @@ var indexSectionsWithContent =
   3: "acdefgimnrsu",
   4: "abcdfnp",
   5: "b",
-  6: "ft"
+  6: "ft",
+  7: "d"
 };
 
 var indexSectionNames =
@@ -24,7 +25,8 @@ var indexSectionNames =
   3: "functions",
   4: "variables",
   5: "enums",
-  6: "enumvalues"
+  6: "enumvalues",
+  7: "pages"
 };
 
 function convertToId(search)

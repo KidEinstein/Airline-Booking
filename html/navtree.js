@@ -1,6 +1,7 @@
 var NAVTREE =
 [
   [ "AirlineBooking", "index.html", [
+    [ "DSC Project", "index.html", null ],
     [ "Data Structures", null, [
       [ "Data Structures", "annotated.html", "annotated" ],
       [ "Data Structure Index", "classes.html", null ],

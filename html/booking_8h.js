@@ -28,7 +28,6 @@ var booking_8h =
     [ "startBooking", "booking_8h.html#ad88be1614c9ccbe093df46f473cc506a", null ],
     [ "updateFare", "booking_8h.html#aa8b24ee866a57f2dab7c6df91d58670e", null ],
     [ "updateSeats", "booking_8h.html#afd304fc13197b152e61e06ddeb3e9f90", null ],
-    [ "bookedCount", "booking_8h.html#a06a94238926cf837d54e74a66674fe93", null ],
     [ "booking", "booking_8h.html#a43177cd7fff22d7811e1a407e5f1be15", null ],
     [ "capacity", "booking_8h.html#adbe66a087ac3fd4a5b0566f64ca2d12b", null ],
     [ "fi", "booking_8h.html#a63ca097217c3ffff749bde57fedda0e2", null ],
