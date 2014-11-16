@@ -122,462 +122,443 @@ $(document).ready(function(){initNavTree('booking_8h_source.html','');});
 <div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structticket.html#a3acb4e05ce192acb1ef223ec62891725">   48</a></span>&#160;    <span class="keywordtype">char</span> airline[20];</div>
 <div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structticket.html#ab8bdf6615eae3d233291ab4be030df2a">   50</a></span>&#160;    <span class="keywordtype">char</span> flight_number[10];</div>
 <div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structticket.html#ae4d2e27c920650bc6325d0e81cf829d9">   52</a></span>&#160;    <span class="keywordtype">char</span> date[10];</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">//char dep_time[10];</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">//char arr_time[10];</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structticket.html#adbddfa1cf9fa643c6cea63f5ea3006a4">   56</a></span>&#160;<span class="comment"></span>    <span class="keywordtype">char</span> booking_reference[20];</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structticket.html#af79afaf9c850bee6ec68f883d359c068">   58</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structticket.html#af79afaf9c850bee6ec68f883d359c068">fare</a>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structticket.html#a823f183077ae42b41a4f00941da72430">   60</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structticket.html#a823f183077ae42b41a4f00941da72430">active</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">   62</a></span>&#160;    <span class="keyword">struct </span>tm dep;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structticket.html#a7316ad33eb22844503746b7542bb2903">   64</a></span>&#160;    <span class="keyword">struct </span>tm arr;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}<a class="code" href="structticket.html">ticket</a>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="booking_8h.html#a43177cd7fff22d7811e1a407e5f1be15">   69</a></span>&#160;<a class="code" href="structticket.html">ticket</a> *<a class="code" href="booking_8h.html#a43177cd7fff22d7811e1a407e5f1be15">booking</a>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">   71</a></span>&#160;FILE* <a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">   73</a></span>&#160;FILE* <a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="booking_8h.html#a7393cc8662b4c4799c2db47c8c8adf8f">   80</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a7393cc8662b4c4799c2db47c8c8adf8f">increaseCapacity</a>()</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>==<a class="code" href="booking_8h.html#adbe66a087ac3fd4a5b0566f64ca2d12b">capacity</a>-1)</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <a class="code" href="booking_8h.html#adbe66a087ac3fd4a5b0566f64ca2d12b">capacity</a>*=2;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            booking=(<a class="code" href="structticket.html">ticket</a>*)realloc(booking, <a class="code" href="booking_8h.html#adbe66a087ac3fd4a5b0566f64ca2d12b">capacity</a>*<span class="keyword">sizeof</span>(<a class="code" href="structticket.html">ticket</a>));</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="booking_8h.html#a0d571cd4fd51f58cf22493ea4ec18170">   94</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a0d571cd4fd51f58cf22493ea4ec18170">rewriteFile</a>()</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;{</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    FILE* fb;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    fb=fopen(<span class="stringliteral">&quot;src/bookings.dat&quot;</span>,<span class="stringliteral">&quot;w+&quot;</span>);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">int</span> size=<span class="keyword">sizeof</span>(<a class="code" href="structticket.html">ticket</a>);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">int</span> i=0;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">for</span>(i=0;i&lt;=<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>;i++)</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        fwrite(&amp;booking[i], size, 1, fb);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    fclose(fb);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="booking_8h.html#a8db989c03e6719d9888dd3ec3d2ef7cc">  109</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a8db989c03e6719d9888dd3ec3d2ef7cc">readFile</a>()</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    FILE *fb;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    fb =  fopen(<span class="stringliteral">&quot;src/bookings.dat&quot;</span>,<span class="stringliteral">&quot;r&quot;</span>);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">int</span> size=<span class="keyword">sizeof</span>(<a class="code" href="structticket.html">ticket</a>);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">while</span>(fread(&amp;booking[++<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>], size, 1, fb)==1)</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <a class="code" href="booking_8h.html#a7393cc8662b4c4799c2db47c8c8adf8f">increaseCapacity</a>();</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    --<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="comment">//printf(&quot;Number read %d&quot;,nTicket);</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    fclose(fb);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="booking_8h.html#ad88be1614c9ccbe093df46f473cc506a">  128</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#ad88be1614c9ccbe093df46f473cc506a">startBooking</a>()</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;{</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    booking = (<a class="code" href="structticket.html">ticket</a>*)malloc(<a class="code" href="booking_8h.html#adbe66a087ac3fd4a5b0566f64ca2d12b">capacity</a> * <span class="keyword">sizeof</span>(<a class="code" href="structticket.html">ticket</a>));</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <a class="code" href="booking_8h.html#a8db989c03e6719d9888dd3ec3d2ef7cc">readFile</a>();</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
-<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="booking_8h.html#acc6b6c3739f0484dc9d8d5e6d161402c">  141</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#acc6b6c3739f0484dc9d8d5e6d161402c">gen_reference</a>(<span class="keywordtype">char</span> *s, <span class="keywordtype">int</span> len) {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    srand(time(0));</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordtype">char</span> temp[5];</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">int</span> i=0;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordtype">char</span> alphanum[] =</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="stringliteral">&quot;0123456789&quot;</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="stringliteral">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="stringliteral">&quot;abcdefghijklmnopqrstuvwxyz&quot;</span>;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; len; ++i) {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        s[i] = alphanum[rand() % (<span class="keyword">sizeof</span>(alphanum) - 1)];</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    s[len]=<span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    sprintf(temp,<span class="stringliteral">&quot;%d&quot;</span>,<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    strcat(s, temp);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
-<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="booking_8h.html#abc9bc6f097c12071cf29259f13815e26">  165</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="booking_8h.html#abc9bc6f097c12071cf29259f13815e26">displayFlight</a>(<span class="keywordtype">char</span> dep[], <span class="keywordtype">char</span> des[])</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;{</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordtype">int</span> seatAvail;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordtype">char</span> depf[20], desf[20], fn[10], dep_t[10], arr_t[10], al[20];</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordtype">int</span> faref=0;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>=fopen(<span class="stringliteral">&quot;src/flights.txt&quot;</span>, <span class="stringliteral">&quot;r&quot;</span>);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>=fopen(<span class="stringliteral">&quot;src/availableFlights.txt&quot;</span>, <span class="stringliteral">&quot;w&quot;</span>);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">//  if(fi==NULL)</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">//      printf(&quot;Error&quot;);</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">//  else</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">//      printf(&quot;Working&quot;);</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">//scanf(&quot;%*d&quot;);</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordtype">int</span> i=0,flag=0;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">while</span>( fscanf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%d,%d\n&quot;</span>, depf, desf, al, fn, dep_t, arr_t, &amp;faref, &amp;seatAvail)!=EOF)</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    {</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="keywordflow">if</span>(strcmp(dep, depf)==0&amp;&amp;strcmp(des, desf)==0)</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        {</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            flag=1;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            printf(<span class="stringliteral">&quot;%d %s %s %s %s %s %s %d\n&quot;</span>, ++i, depf, desf, al, fn, dep_t, arr_t, faref);</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            fprintf(<a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>, <span class="stringliteral">&quot;%d,%s,%s,%s,%s,%s,%s,%d,%d\n&quot;</span>, i, depf, desf, al, fn, dep_t, arr_t, faref, seatAvail);</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        }</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    fclose(<a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">if</span>(flag==0)</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
-<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="booking_8h.html#adf46d26b65f413f0d5a07f17882c826c">  201</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#adf46d26b65f413f0d5a07f17882c826c">feedDetails</a>(<span class="keywordtype">int</span> choice)</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;{</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordtype">int</span> i=0,dep_h,dep_m, arr_h, arr_m;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordtype">char</span> depf[20], desf[20], fn[10], al[20];</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordtype">int</span> faref=0;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>=fopen(<span class="stringliteral">&quot;src/availableFlights.txt&quot;</span>, <span class="stringliteral">&quot;r&quot;</span>);</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">while</span>( fscanf(<a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>, <span class="stringliteral">&quot;%d,%[^,],%[^,],%[^,],%[^,],%d:%d,%d:%d,%d,%*d\n&quot;</span>, &amp;i, depf, desf, al, fn, &amp;dep_h, &amp;dep_m, &amp;arr_h, &amp;arr_m, &amp;faref)!=EOF)</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    {</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="comment">//printf(&quot;%d %s %s %s %s %s %d\n&quot;, i, depf, desf, fn, dep_t, arr_t, faref);</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">if</span>(i==choice)</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            strcpy(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].flight_number,fn);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="comment">//strcpy(booking[nTicket].dep_time,dep_t);</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="comment">//strcpy(booking[nTicket].arr_time,arr_t);</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            strcpy(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].airline,al);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#af79afaf9c850bee6ec68f883d359c068">fare</a>=faref;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_hour=dep_h;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_min=dep_m;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a7316ad33eb22844503746b7542bb2903">arr</a>.tm_hour=arr_h;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a7316ad33eb22844503746b7542bb2903">arr</a>.tm_min=arr_m;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="comment">//printf(&quot;Fare is %d and %d and nTicket is %d&quot;, booking[nTicket].fare, faref, nTicket);</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    }</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}</div>
-<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="booking_8h.html#aa924f9ef999c8e33f83eb98e56d31784">  232</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="booking_8h.html#aa924f9ef999c8e33f83eb98e56d31784">count</a>(<span class="keywordtype">int</span> n)</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;{</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordtype">int</span> i=0;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordflow">while</span>(n!=0)</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    {</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        n/=10;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        i++;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    }</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">return</span> i;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structticket.html#adbddfa1cf9fa643c6cea63f5ea3006a4">   54</a></span>&#160;    <span class="keywordtype">char</span> booking_reference[20];</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structticket.html#af79afaf9c850bee6ec68f883d359c068">   56</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structticket.html#af79afaf9c850bee6ec68f883d359c068">fare</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structticket.html#a823f183077ae42b41a4f00941da72430">   58</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structticket.html#a823f183077ae42b41a4f00941da72430">active</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">   60</a></span>&#160;    <span class="keyword">struct </span>tm dep;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structticket.html#a7316ad33eb22844503746b7542bb2903">   62</a></span>&#160;    <span class="keyword">struct </span>tm arr;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}<a class="code" href="structticket.html">ticket</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="booking_8h.html#a43177cd7fff22d7811e1a407e5f1be15">   67</a></span>&#160;<a class="code" href="structticket.html">ticket</a> *<a class="code" href="booking_8h.html#a43177cd7fff22d7811e1a407e5f1be15">booking</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">   69</a></span>&#160;FILE* <a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">   71</a></span>&#160;FILE* <a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="booking_8h.html#a7393cc8662b4c4799c2db47c8c8adf8f">   78</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a7393cc8662b4c4799c2db47c8c8adf8f">increaseCapacity</a>()</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>==<a class="code" href="booking_8h.html#adbe66a087ac3fd4a5b0566f64ca2d12b">capacity</a>-1)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <a class="code" href="booking_8h.html#adbe66a087ac3fd4a5b0566f64ca2d12b">capacity</a>*=2;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            booking=(<a class="code" href="structticket.html">ticket</a>*)realloc(booking, <a class="code" href="booking_8h.html#adbe66a087ac3fd4a5b0566f64ca2d12b">capacity</a>*<span class="keyword">sizeof</span>(<a class="code" href="structticket.html">ticket</a>));</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="booking_8h.html#a0d571cd4fd51f58cf22493ea4ec18170">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a0d571cd4fd51f58cf22493ea4ec18170">rewriteFile</a>()</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;{</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    FILE* fb;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    fb=fopen(<span class="stringliteral">&quot;src/bookings.dat&quot;</span>,<span class="stringliteral">&quot;w+&quot;</span>);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">int</span> size=<span class="keyword">sizeof</span>(<a class="code" href="structticket.html">ticket</a>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">int</span> i=0;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">for</span>(i=0;i&lt;=<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>;i++)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        fwrite(&amp;booking[i], size, 1, fb);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    fclose(fb);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="booking_8h.html#a8db989c03e6719d9888dd3ec3d2ef7cc">  107</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a8db989c03e6719d9888dd3ec3d2ef7cc">readFile</a>()</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    FILE *fb;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    fb =  fopen(<span class="stringliteral">&quot;src/bookings.dat&quot;</span>,<span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">int</span> size=<span class="keyword">sizeof</span>(<a class="code" href="structticket.html">ticket</a>);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">while</span>(fread(&amp;booking[++<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>], size, 1, fb)==1)</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="booking_8h.html#a7393cc8662b4c4799c2db47c8c8adf8f">increaseCapacity</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    --<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    fclose(fb);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="booking_8h.html#ad88be1614c9ccbe093df46f473cc506a">  125</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#ad88be1614c9ccbe093df46f473cc506a">startBooking</a>()</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;{</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    booking = (<a class="code" href="structticket.html">ticket</a>*)malloc(<a class="code" href="booking_8h.html#adbe66a087ac3fd4a5b0566f64ca2d12b">capacity</a> * <span class="keyword">sizeof</span>(<a class="code" href="structticket.html">ticket</a>));</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <a class="code" href="booking_8h.html#a8db989c03e6719d9888dd3ec3d2ef7cc">readFile</a>();</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="booking_8h.html#acc6b6c3739f0484dc9d8d5e6d161402c">  138</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#acc6b6c3739f0484dc9d8d5e6d161402c">gen_reference</a>(<span class="keywordtype">char</span> *s, <span class="keywordtype">int</span> len) {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    srand(time(0));</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordtype">char</span> temp[5];</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordtype">int</span> i=0;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordtype">char</span> alphanum[] =</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="stringliteral">&quot;0123456789&quot;</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="stringliteral">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="stringliteral">&quot;abcdefghijklmnopqrstuvwxyz&quot;</span>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; len; ++i) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        s[i] = alphanum[rand() % (<span class="keyword">sizeof</span>(alphanum) - 1)];</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    s[len]=<span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    sprintf(temp,<span class="stringliteral">&quot;%d&quot;</span>,<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    strcat(s, temp);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="booking_8h.html#abc9bc6f097c12071cf29259f13815e26">  162</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="booking_8h.html#abc9bc6f097c12071cf29259f13815e26">displayFlight</a>(<span class="keywordtype">char</span> dep[], <span class="keywordtype">char</span> des[])</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;{</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordtype">int</span> seatAvail;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordtype">char</span> depf[20], desf[20], fn[10], dep_t[10], arr_t[10], al[20];</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordtype">int</span> faref=0;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>=fopen(<span class="stringliteral">&quot;src/flights.txt&quot;</span>, <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>=fopen(<span class="stringliteral">&quot;src/availableFlights.txt&quot;</span>, <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordtype">int</span> i=0,flag=0;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    printf(<span class="stringliteral">&quot;S.No \t Departure City \t Destination City \t Airline \t\t Flight Number \t Departure Time \t Arrival Time \t Fare\n&quot;</span>);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">while</span>( fscanf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%d,%d\n&quot;</span>, depf, desf, al, fn, dep_t, arr_t, &amp;faref, &amp;seatAvail)!=EOF)</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">if</span>(strcmp(dep, depf)==0&amp;&amp;strcmp(des, desf)==0)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            flag=1;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            printf(<span class="stringliteral">&quot;%d \t %-10s \t %-10s \t\t %-10s \t\t %s \t\t %s \t\t %s \t\t %d\n&quot;</span>, ++i, depf, desf, al, fn, dep_t, arr_t, faref);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            fprintf(<a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>, <span class="stringliteral">&quot;%d,%s,%s,%s,%s,%s,%s,%d,%d\n&quot;</span>, i, depf, desf, al, fn, dep_t, arr_t, faref, seatAvail);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    fclose(<a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">if</span>(flag==0)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}</div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="booking_8h.html#adf46d26b65f413f0d5a07f17882c826c">  194</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#adf46d26b65f413f0d5a07f17882c826c">feedDetails</a>(<span class="keywordtype">int</span> choice)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;{</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordtype">int</span> i=0,dep_h,dep_m, arr_h, arr_m;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordtype">char</span> depf[20], desf[20], fn[10], al[20];</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordtype">int</span> faref=0;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>=fopen(<span class="stringliteral">&quot;src/availableFlights.txt&quot;</span>, <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">while</span>( fscanf(<a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>, <span class="stringliteral">&quot;%d,%[^,],%[^,],%[^,],%[^,],%d:%d,%d:%d,%d,%*d\n&quot;</span>, &amp;i, depf, desf, al, fn, &amp;dep_h, &amp;dep_m, &amp;arr_h, &amp;arr_m, &amp;faref)!=EOF)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">if</span>(i==choice)</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            strcpy(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].flight_number,fn);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            strcpy(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].airline,al);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#af79afaf9c850bee6ec68f883d359c068">fare</a>=faref;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_hour=dep_h;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_min=dep_m;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a7316ad33eb22844503746b7542bb2903">arr</a>.tm_hour=arr_h;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a7316ad33eb22844503746b7542bb2903">arr</a>.tm_min=arr_m;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;}</div>
+<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="booking_8h.html#aa924f9ef999c8e33f83eb98e56d31784">  223</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="booking_8h.html#aa924f9ef999c8e33f83eb98e56d31784">count</a>(<span class="keywordtype">int</span> n)</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;{</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordtype">int</span> i=0;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordflow">while</span>(n!=0)</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        n/=10;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        i++;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    }</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordflow">return</span> i;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;}</div>
+<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">  238</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(<span class="keywordtype">char</span>* a)</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;{</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    a[strlen(a)-1]=<span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div>
-<div class="line"><a name="l00247"></a><span class="lineno"><a class="line" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">  247</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(<span class="keywordtype">char</span>* a)</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;{</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    a[strlen(a)-1]=<span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;}</div>
-<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="booking_8h.html#afd304fc13197b152e61e06ddeb3e9f90">  259</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#afd304fc13197b152e61e06ddeb3e9f90">updateSeats</a>(<span class="keywordtype">char</span>* fn, <span class="keywordtype">int</span> new_seatAvail)</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;{</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordtype">char</span> ffn[10];</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordtype">int</span> seatAvail,flag=0;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>=fopen(<span class="stringliteral">&quot;src/flights.txt&quot;</span>, <span class="stringliteral">&quot;r+&quot;</span>);</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">while</span>(fscanf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%*[^,],%*[^,],%*[^,],%[^,],%*[^,],%*[^,],%*d,%d&quot;</span>, ffn,&amp;seatAvail)!=EOF)</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    {</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="keywordflow">if</span>(strcmp(ffn,fn)==0)</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            flag=1;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            fseek(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, -10, SEEK_CUR);</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">if</span>(new_seatAvail==-1)</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                fprintf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%10d&quot;</span>, --seatAvail);</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                fprintf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%10d&quot;</span>, new_seatAvail);</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="comment">//printf(&quot;%d\n&quot;,seatAvail);</span></div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            fclose(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>);</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        }</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    }</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    printf(<span class="stringliteral">&quot;Flight not found\n&quot;</span>);</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    fclose(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>);</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;}</div>
-<div class="line"><a name="l00291"></a><span class="lineno"><a class="line" href="booking_8h.html#a0d5bb12b8983bc795d19143b97d59ba2">  291</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="booking_8h.html#a0d5bb12b8983bc795d19143b97d59ba2">isSeatAvailable</a>(<span class="keywordtype">int</span> n)</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;{</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordtype">int</span> fn=0;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordtype">int</span> seatAvail;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>=fopen(<span class="stringliteral">&quot;src/availableFlights.txt&quot;</span>, <span class="stringliteral">&quot;r&quot;</span>);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keywordflow">while</span>(fscanf(<a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>, <span class="stringliteral">&quot;%d,%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*d,%d&quot;</span>, &amp;fn,&amp;seatAvail)!=EOF)</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    {</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="keywordflow">if</span>(fn==n)</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        {</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <span class="keywordflow">if</span>(seatAvail==0)</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        }</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    }</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;}</div>
-<div class="line"><a name="l00315"></a><span class="lineno"><a class="line" href="booking_8h.html#a899ce30664a62177a9346df7fd823b18">  315</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a899ce30664a62177a9346df7fd823b18">displayBooking</a>(<span class="keywordtype">int</span> x)</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;{</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordtype">long</span> num_seconds,minutes,hours,days;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="comment">//printf(&quot;Fare is %d and nTicket is %d&quot;, booking[nTicket].fare, nTicket);</span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    printf(<span class="stringliteral">&quot;Booking Reference: %s\n&quot;</span>, booking[x].booking_reference);</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    printf(<span class="stringliteral">&quot;Passenger Name: %s\n&quot;</span>, booking[x].passenger_name);</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    printf(<span class="stringliteral">&quot;Departure City: %s\n&quot;</span>, booking[x].departure_city);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    printf(<span class="stringliteral">&quot;Destination City: %s\n&quot;</span>, booking[x].destination_city);</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    printf(<span class="stringliteral">&quot;Airline: %s\n&quot;</span>, booking[x].airline);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    printf(<span class="stringliteral">&quot;Flight Number: %s\n&quot;</span>, booking[x].flight_number);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="comment">//printf(&quot;Date: %s&quot;, booking[x].date);</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="comment">//printf(&quot;Departure Time: %s\n&quot;, booking[x].dep_time);</span></div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="comment">//printf(&quot;Arrival Time: %s\n&quot;, booking[x].arr_time);</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    printf(<span class="stringliteral">&quot;Fare: %d\n&quot;</span>, booking[x].fare);</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    printf(<span class="stringliteral">&quot;Departure Time: %s&quot;</span>, asctime(&amp;booking[x].dep));</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    printf(<span class="stringliteral">&quot;Arrival Time: %s&quot;</span>, asctime(&amp;booking[x].arr));</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    num_seconds=difftime(mktime(&amp;booking[x].dep),time(NULL));</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    days = num_seconds / (60 * 60 * 24);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    num_seconds -= days * (60 * 60 * 24);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    hours = num_seconds / (60 * 60);</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    num_seconds -= hours * (60 * 60);</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    minutes = num_seconds / 60;</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    num_seconds -= minutes*60;</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    printf(<span class="stringliteral">&quot;Time left: %ld days %ld hours %ld minutes %ld seconds\n&quot;</span>, days,hours,minutes,num_seconds);</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;}</div>
-<div class="line"><a name="l00350"></a><span class="lineno"><a class="line" href="booking_8h.html#aa8b24ee866a57f2dab7c6df91d58670e">  350</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#aa8b24ee866a57f2dab7c6df91d58670e">updateFare</a>(<span class="keywordtype">char</span>* fn, <span class="keywordtype">int</span> new_fare)</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;{</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordtype">char</span> ffn[10];</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="keywordtype">int</span> seatAvail,ffare;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>=fopen(<span class="stringliteral">&quot;src/flights.txt&quot;</span>, <span class="stringliteral">&quot;r+&quot;</span>);</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keywordflow">while</span>(fscanf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%*[^,],%*[^,],%*[^,],%[^,],%*[^,],%*[^,],%d,%d&quot;</span>, ffn,&amp;ffare,&amp;seatAvail)!=EOF)</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    {</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        <span class="keywordflow">if</span>(strcmp(ffn,fn)==0)</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        {</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            fseek(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, -21, SEEK_CUR);</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            <span class="keywordflow">if</span>(new_fare==-1&amp;&amp;seatAvail==10)</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                fprintf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%10d,%10d&quot;</span>, 2*ffare,seatAvail);</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                fprintf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%10d,%10d&quot;</span>, new_fare,seatAvail);</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            <span class="comment">//printf(&quot;%d\n&quot;,seatAvail);</span></div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            fclose(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        }</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    }</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    printf(<span class="stringliteral">&quot;Flight not found&quot;</span>);</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    fclose(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>);</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;}</div>
-<div class="line"><a name="l00378"></a><span class="lineno"><a class="line" href="booking_8h.html#a22c4a7a4d5c69264db7a71b0883e7743">  378</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a22c4a7a4d5c69264db7a71b0883e7743">newBooking</a>()</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;{</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="keywordtype">int</span> choice,d,m,y;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    FILE *fb;</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="keywordtype">int</span> size=<span class="keyword">sizeof</span>(<a class="code" href="structticket.html">ticket</a>);</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    fb =  fopen(<span class="stringliteral">&quot;src/bookings.dat&quot;</span>, <span class="stringliteral">&quot;a+b&quot;</span>);</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <a class="code" href="booking_8h.html#a7393cc8662b4c4799c2db47c8c8adf8f">increaseCapacity</a>();</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    ++<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>;</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    printf(<span class="stringliteral">&quot;Enter departure city: &quot;</span>);</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>, booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].departure_city);</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    printf(<span class="stringliteral">&quot;Enter destination city: &quot;</span>);</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>, booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].destination_city);</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordflow">if</span>(!<a class="code" href="booking_8h.html#abc9bc6f097c12071cf29259f13815e26">displayFlight</a>(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].departure_city, booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].destination_city))</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    {</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        printf(<span class="stringliteral">&quot;No flight found&quot;</span>);</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    }</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    printf(<span class="stringliteral">&quot;Select flight: &quot;</span>);</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    scanf(<span class="stringliteral">&quot;%d&quot;</span>,&amp;choice);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="comment">//  if(isSeatAvailable(choice)==false)</span></div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="comment">//  {</span></div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="comment">//      printf(&quot;Sorry no seat available&quot;);</span></div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="comment">//      --nTicket;</span></div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="comment">//      return;</span></div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="comment">//  }</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="booking_8h.html#afd304fc13197b152e61e06ddeb3e9f90">  250</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#afd304fc13197b152e61e06ddeb3e9f90">updateSeats</a>(<span class="keywordtype">char</span>* fn, <span class="keywordtype">int</span> new_seatAvail)</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;{</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordtype">char</span> ffn[10];</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordtype">int</span> seatAvail,flag=0;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>=fopen(<span class="stringliteral">&quot;src/flights.txt&quot;</span>, <span class="stringliteral">&quot;r+&quot;</span>);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">while</span>(fscanf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%*[^,],%*[^,],%*[^,],%[^,],%*[^,],%*[^,],%*d,%d&quot;</span>, ffn,&amp;seatAvail)!=EOF)</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">if</span>(strcmp(ffn,fn)==0)</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            flag=1;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            fseek(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, -10, SEEK_CUR);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordflow">if</span>(new_seatAvail==-1)</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                fprintf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%10d&quot;</span>, --seatAvail);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                fprintf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%10d&quot;</span>, new_seatAvail);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            fclose(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        }</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    printf(<span class="stringliteral">&quot;Flight not found\n&quot;</span>);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    fclose(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>);</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;}</div>
+<div class="line"><a name="l00281"></a><span class="lineno"><a class="line" href="booking_8h.html#a0d5bb12b8983bc795d19143b97d59ba2">  281</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="booking_8h.html#a0d5bb12b8983bc795d19143b97d59ba2">isSeatAvailable</a>(<span class="keywordtype">int</span> n)</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;{</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordtype">int</span> fn=0;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordtype">int</span> seatAvail;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>=fopen(<span class="stringliteral">&quot;src/availableFlights.txt&quot;</span>, <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordflow">while</span>(fscanf(<a class="code" href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a>, <span class="stringliteral">&quot;%d,%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*d,%d&quot;</span>, &amp;fn,&amp;seatAvail)!=EOF)</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keywordflow">if</span>(fn==n)</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="keywordflow">if</span>(seatAvail==0)</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;}</div>
+<div class="line"><a name="l00305"></a><span class="lineno"><a class="line" href="booking_8h.html#a899ce30664a62177a9346df7fd823b18">  305</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a899ce30664a62177a9346df7fd823b18">displayBooking</a>(<span class="keywordtype">int</span> x)</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;{</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordtype">long</span> num_seconds,minutes,hours,days;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    printf(<span class="stringliteral">&quot;Booking Reference: %s\n&quot;</span>, booking[x].booking_reference);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    printf(<span class="stringliteral">&quot;Passenger Name: %s\n&quot;</span>, booking[x].passenger_name);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    printf(<span class="stringliteral">&quot;Departure City: %s\n&quot;</span>, booking[x].departure_city);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    printf(<span class="stringliteral">&quot;Destination City: %s\n&quot;</span>, booking[x].destination_city);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    printf(<span class="stringliteral">&quot;Airline: %s\n&quot;</span>, booking[x].airline);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    printf(<span class="stringliteral">&quot;Flight Number: %s\n&quot;</span>, booking[x].flight_number);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    printf(<span class="stringliteral">&quot;Fare: %d\n&quot;</span>, booking[x].fare);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    printf(<span class="stringliteral">&quot;Departure Time: %s&quot;</span>, asctime(&amp;booking[x].dep));</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    printf(<span class="stringliteral">&quot;Arrival Time: %s&quot;</span>, asctime(&amp;booking[x].arr));</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    num_seconds=difftime(mktime(&amp;booking[x].dep),time(NULL));</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    days = num_seconds / (60 * 60 * 24);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    num_seconds -= days * (60 * 60 * 24);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    hours = num_seconds / (60 * 60);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    num_seconds -= hours * (60 * 60);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    minutes = num_seconds / 60;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    num_seconds -= minutes*60;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    printf(<span class="stringliteral">&quot;Time left: %ld days %ld hours %ld minutes %ld seconds\n&quot;</span>, days,hours,minutes,num_seconds);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;}</div>
+<div class="line"><a name="l00336"></a><span class="lineno"><a class="line" href="booking_8h.html#aa8b24ee866a57f2dab7c6df91d58670e">  336</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#aa8b24ee866a57f2dab7c6df91d58670e">updateFare</a>(<span class="keywordtype">char</span>* fn, <span class="keywordtype">int</span> new_fare)</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;{</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordtype">char</span> ffn[10];</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordtype">int</span> seatAvail,ffare;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>=fopen(<span class="stringliteral">&quot;src/flights.txt&quot;</span>, <span class="stringliteral">&quot;r+&quot;</span>);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">while</span>(fscanf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%*[^,],%*[^,],%*[^,],%[^,],%*[^,],%*[^,],%d,%d&quot;</span>, ffn,&amp;ffare,&amp;seatAvail)!=EOF)</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    {</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="keywordflow">if</span>(strcmp(ffn,fn)==0)</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            fseek(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, -21, SEEK_CUR);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            <span class="keywordflow">if</span>(new_fare==-1&amp;&amp;seatAvail==10)</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                fprintf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%10d,%10d&quot;</span>, 2*ffare,seatAvail);</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                fprintf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>, <span class="stringliteral">&quot;%10d,%10d&quot;</span>, new_fare,seatAvail);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            fclose(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    }</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    printf(<span class="stringliteral">&quot;Flight not found&quot;</span>);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    fclose(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>);</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;}</div>
+<div class="line"><a name="l00363"></a><span class="lineno"><a class="line" href="booking_8h.html#a22c4a7a4d5c69264db7a71b0883e7743">  363</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a22c4a7a4d5c69264db7a71b0883e7743">newBooking</a>()</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;{</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="keywordtype">int</span> choice,d,m,y;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    FILE *fb;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="keywordtype">int</span> size=<span class="keyword">sizeof</span>(<a class="code" href="structticket.html">ticket</a>);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    fb =  fopen(<span class="stringliteral">&quot;src/bookings.dat&quot;</span>, <span class="stringliteral">&quot;a+b&quot;</span>);</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <a class="code" href="booking_8h.html#a7393cc8662b4c4799c2db47c8c8adf8f">increaseCapacity</a>();</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    ++<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    printf(<span class="stringliteral">&quot;Enter departure city: &quot;</span>);</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>, booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].departure_city);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    printf(<span class="stringliteral">&quot;Enter destination city: &quot;</span>);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>, booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].destination_city);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keywordflow">if</span>(!<a class="code" href="booking_8h.html#abc9bc6f097c12071cf29259f13815e26">displayFlight</a>(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].departure_city, booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].destination_city))</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    {</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        printf(<span class="stringliteral">&quot;No flight found\n&quot;</span>);</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        --<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    printf(<span class="stringliteral">&quot;Select flight: &quot;</span>);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    scanf(<span class="stringliteral">&quot;%d&quot;</span>,&amp;choice);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="booking_8h.html#a0d5bb12b8983bc795d19143b97d59ba2">isSeatAvailable</a>(choice)==<span class="keyword">false</span>)</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    {</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        printf(<span class="stringliteral">&quot;Sorry no seat available\n&quot;</span>);</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        --<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    }</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    scanf(<span class="stringliteral">&quot;%*c&quot;</span>);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <a class="code" href="booking_8h.html#adf46d26b65f413f0d5a07f17882c826c">feedDetails</a>(choice);</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    printf(<span class="stringliteral">&quot;Enter passenger name: &quot;</span>);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    fgets(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].passenger_name, <span class="keyword">sizeof</span>(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].passenger_name), stdin);</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].passenger_name);</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    printf(<span class="stringliteral">&quot;Enter date in the format dd:mm:yyyy : &quot;</span>);</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    scanf(<span class="stringliteral">&quot;%d:%d:%d&quot;</span>,&amp;d,&amp;m,&amp;y);</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_mday=d;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_mon=m-1;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_year=y-1900;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a7316ad33eb22844503746b7542bb2903">arr</a>.tm_mday=booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_mday;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a7316ad33eb22844503746b7542bb2903">arr</a>.tm_mon=booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_mon;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a7316ad33eb22844503746b7542bb2903">arr</a>.tm_year=booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_year;</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    scanf(<span class="stringliteral">&quot;%*c&quot;</span>);</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <a class="code" href="booking_8h.html#adf46d26b65f413f0d5a07f17882c826c">feedDetails</a>(choice);</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="comment">//printf(&quot;Fare is %d and nTicket is %d&quot;, booking[nTicket].fare, nTicket);</span></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    printf(<span class="stringliteral">&quot;Enter passenger name: &quot;</span>);</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    fgets(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].passenger_name, <span class="keyword">sizeof</span>(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].passenger_name), stdin);</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <span class="comment">//printf(&quot;Fare is %d and nTicket is %d&quot;, booking[nTicket].fare, nTicket);</span></div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].passenger_name);</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    printf(<span class="stringliteral">&quot;Enter date in the format dd:mm:yyyy : &quot;</span>);</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    scanf(<span class="stringliteral">&quot;%d:%d:%d&quot;</span>,&amp;d,&amp;m,&amp;y);</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_mday=d;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_mon=m-1;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_year=y-1900;</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a7316ad33eb22844503746b7542bb2903">arr</a>.tm_mday=booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_mday;</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a7316ad33eb22844503746b7542bb2903">arr</a>.tm_mon=booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_mon;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a7316ad33eb22844503746b7542bb2903">arr</a>.tm_year=booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">dep</a>.tm_year;</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    <span class="comment">//fgets(booking[nTicket].date, sizeof(booking[nTicket].date), stdin);</span></div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="comment">//remove_newline(booking[nTicket].date);</span></div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    <a class="code" href="booking_8h.html#acc6b6c3739f0484dc9d8d5e6d161402c">gen_reference</a>(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].booking_reference,10);</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a823f183077ae42b41a4f00941da72430">active</a>=<span class="keyword">true</span>;</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <a class="code" href="booking_8h.html#afd304fc13197b152e61e06ddeb3e9f90">updateSeats</a>(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].flight_number, -1);</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <a class="code" href="booking_8h.html#a899ce30664a62177a9346df7fd823b18">displayBooking</a>(<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>);</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    fwrite(&amp;booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>], size, 1, fb);</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    fclose(fb);</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;}</div>
-<div class="line"><a name="l00436"></a><span class="lineno"><a class="line" href="booking_8h.html#abd95a435c280990f8e994539b1aa6b67">  436</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#abd95a435c280990f8e994539b1aa6b67">change_fare</a>()</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;{</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    <span class="keywordtype">char</span> fn[10];</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <span class="keywordtype">int</span> fare;</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    printf(<span class="stringliteral">&quot;Enter flight number: &quot;</span>);</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>,fn);</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    printf(<span class="stringliteral">&quot;Enter new fare: &quot;</span>);</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    scanf(<span class="stringliteral">&quot;%d&quot;</span>,&amp;fare);</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <a class="code" href="booking_8h.html#aa8b24ee866a57f2dab7c6df91d58670e">updateFare</a>(fn, fare);</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;}</div>
-<div class="line"><a name="l00453"></a><span class="lineno"><a class="line" href="booking_8h.html#a94a09185856dd115e3f87302475f005e">  453</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="booking_8h.html#a94a09185856dd115e3f87302475f005e">getIndex</a>(<span class="keywordtype">char</span>* br)</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    <a class="code" href="booking_8h.html#acc6b6c3739f0484dc9d8d5e6d161402c">gen_reference</a>(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].booking_reference,10);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].<a class="code" href="structticket.html#a823f183077ae42b41a4f00941da72430">active</a>=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <a class="code" href="booking_8h.html#afd304fc13197b152e61e06ddeb3e9f90">updateSeats</a>(booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>].flight_number, -1);</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    <a class="code" href="booking_8h.html#a899ce30664a62177a9346df7fd823b18">displayBooking</a>(<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>);</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    fwrite(&amp;booking[<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>], size, 1, fb);</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    fclose(fb);</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;}</div>
+<div class="line"><a name="l00418"></a><span class="lineno"><a class="line" href="booking_8h.html#abd95a435c280990f8e994539b1aa6b67">  418</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#abd95a435c280990f8e994539b1aa6b67">change_fare</a>()</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;{</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <span class="keywordtype">char</span> fn[10];</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    <span class="keywordtype">int</span> fare;</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    printf(<span class="stringliteral">&quot;Enter flight number: &quot;</span>);</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>,fn);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    printf(<span class="stringliteral">&quot;Enter new fare: &quot;</span>);</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    scanf(<span class="stringliteral">&quot;%d&quot;</span>,&amp;fare);</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <a class="code" href="booking_8h.html#aa8b24ee866a57f2dab7c6df91d58670e">updateFare</a>(fn, fare);</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;}</div>
+<div class="line"><a name="l00435"></a><span class="lineno"><a class="line" href="booking_8h.html#a94a09185856dd115e3f87302475f005e">  435</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="booking_8h.html#a94a09185856dd115e3f87302475f005e">getIndex</a>(<span class="keywordtype">char</span>* br)</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;{</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordtype">int</span> i=0;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    <span class="keywordflow">for</span>(i=0;i&lt;=<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>;i++)</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    {</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        <span class="keywordflow">if</span>(strcmp(booking[i].booking_reference,br)==0 &amp;&amp; booking[i].active==<span class="keyword">true</span>)</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        {</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            <span class="keywordflow">return</span> i;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        }</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;}</div>
+<div class="line"><a name="l00453"></a><span class="lineno"><a class="line" href="booking_8h.html#a16b39c080047511200e18c5fa367061d">  453</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a16b39c080047511200e18c5fa367061d">findBooking</a>()</div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;{</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keywordtype">int</span> i=0;</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    <span class="keywordflow">for</span>(i=0;i&lt;=<a class="code" href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a>;i++)</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    {</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        <span class="keywordflow">if</span>(strcmp(booking[i].booking_reference,br)==0 &amp;&amp; booking[i].active==<span class="keyword">true</span>)</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        {</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            <span class="keywordflow">return</span> i;</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        }</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    }</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;}</div>
-<div class="line"><a name="l00471"></a><span class="lineno"><a class="line" href="booking_8h.html#a16b39c080047511200e18c5fa367061d">  471</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a16b39c080047511200e18c5fa367061d">findBooking</a>()</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;{</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    <span class="keywordtype">int</span> index;</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    <span class="keywordtype">char</span> book_ref[20];</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    printf(<span class="stringliteral">&quot;Enter booking reference: &quot;</span>);</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>,book_ref);</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    index=<a class="code" href="booking_8h.html#a94a09185856dd115e3f87302475f005e">getIndex</a>(book_ref);</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    <span class="keywordflow">if</span>(index==-1)</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        printf(<span class="stringliteral">&quot;Booking not found&quot;</span>);</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    {</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        <a class="code" href="booking_8h.html#a899ce30664a62177a9346df7fd823b18">displayBooking</a>(index);</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    }</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;}</div>
-<div class="line"><a name="l00492"></a><span class="lineno"><a class="line" href="booking_8h.html#a11f6041e0fa57629e1d72f56e23ff37f">  492</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a11f6041e0fa57629e1d72f56e23ff37f">deleteBooking</a>()</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keywordtype">int</span> index;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    <span class="keywordtype">char</span> book_ref[20];</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    printf(<span class="stringliteral">&quot;Enter booking reference: &quot;</span>);</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>,book_ref);</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    index=<a class="code" href="booking_8h.html#a94a09185856dd115e3f87302475f005e">getIndex</a>(book_ref);</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <span class="keywordflow">if</span>(index==-1)</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        printf(<span class="stringliteral">&quot;Booking not found\n&quot;</span>);</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    {</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        <a class="code" href="booking_8h.html#a899ce30664a62177a9346df7fd823b18">displayBooking</a>(index);</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    }</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;}</div>
+<div class="line"><a name="l00474"></a><span class="lineno"><a class="line" href="booking_8h.html#a11f6041e0fa57629e1d72f56e23ff37f">  474</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a11f6041e0fa57629e1d72f56e23ff37f">deleteBooking</a>()</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;{</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    <span class="keywordtype">int</span> index;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    <span class="keywordtype">char</span> book_ref[20];</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    printf(<span class="stringliteral">&quot;Enter booking reference: &quot;</span>);</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>, book_ref);</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    index=<a class="code" href="booking_8h.html#a94a09185856dd115e3f87302475f005e">getIndex</a>(book_ref);</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    <span class="keywordflow">if</span>(index==-1)</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        printf(<span class="stringliteral">&quot;Booking not found&quot;</span>);</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        booking[index].<a class="code" href="structticket.html#a823f183077ae42b41a4f00941da72430">active</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;    <a class="code" href="booking_8h.html#a0d571cd4fd51f58cf22493ea4ec18170">rewriteFile</a>();</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;}</div>
+<div class="line"><a name="l00492"></a><span class="lineno"><a class="line" href="booking_8h.html#a403f832272d4c63af48b112755363380">  492</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a403f832272d4c63af48b112755363380">addFlight</a>()</div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;{</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    <span class="keywordtype">int</span> index;</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    <span class="keywordtype">char</span> book_ref[20];</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    printf(<span class="stringliteral">&quot;Enter booking reference: &quot;</span>);</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>, book_ref);</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    index=<a class="code" href="booking_8h.html#a94a09185856dd115e3f87302475f005e">getIndex</a>(book_ref);</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;    <span class="keywordflow">if</span>(index==-1)</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        printf(<span class="stringliteral">&quot;Booking not found&quot;</span>);</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        booking[index].<a class="code" href="structticket.html#a823f183077ae42b41a4f00941da72430">active</a>=<span class="keyword">false</span>;</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    <a class="code" href="booking_8h.html#a0d571cd4fd51f58cf22493ea4ec18170">rewriteFile</a>();</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;}</div>
-<div class="line"><a name="l00510"></a><span class="lineno"><a class="line" href="booking_8h.html#a403f832272d4c63af48b112755363380">  510</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a403f832272d4c63af48b112755363380">addFlight</a>()</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;{</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    <a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>=fopen(<span class="stringliteral">&quot;src/flights.txt&quot;</span>, <span class="stringliteral">&quot;a+&quot;</span>);</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    <span class="keywordtype">char</span> depf[20], desf[20], fn[10], dep_t[10], arr_t[10], al[20];</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;    <span class="keywordtype">int</span> faref, seatAvail;</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;    printf(<span class="stringliteral">&quot;Enter departure city: &quot;</span>);</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    fgets(depf, <span class="keyword">sizeof</span>(depf), stdin);</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(depf);</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    printf(<span class="stringliteral">&quot;Enter destination city: &quot;</span>);</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    fgets(desf, <span class="keyword">sizeof</span>(desf), stdin);</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(desf);</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    printf(<span class="stringliteral">&quot;Enter airline: &quot;</span>);</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    fgets(al, <span class="keyword">sizeof</span>(al), stdin);</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(al);</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    printf(<span class="stringliteral">&quot;Enter flight number&quot;</span>);</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    fgets(fn, <span class="keyword">sizeof</span>(fn), stdin);</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(fn);</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    printf(<span class="stringliteral">&quot;Enter departure time&quot;</span>);</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    fgets(dep_t, <span class="keyword">sizeof</span>(dep_t), stdin);</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(dep_t);</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    printf(<span class="stringliteral">&quot;Enter arrival time: &quot;</span>);</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    fgets(arr_t, <span class="keyword">sizeof</span>(arr_t), stdin);</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(arr_t);</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    printf(<span class="stringliteral">&quot;Enter fare&quot;</span>);</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    scanf(<span class="stringliteral">&quot;%d&quot;</span>,&amp;faref);</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    printf(<span class="stringliteral">&quot;Enter available seats: &quot;</span>);</div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    scanf(<span class="stringliteral">&quot;%d&quot;</span>,&amp;seatAvail);</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    fprintf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>,<span class="stringliteral">&quot;%s,%s,%s,%s,%s,%s,%10d,%10d\n&quot;</span>, depf, desf, al, fn, dep_t, arr_t, faref, seatAvail);</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    fclose(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>);</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;}</div>
-<div class="line"><a name="l00546"></a><span class="lineno"><a class="line" href="booking_8h.html#abc1757b0a6b059af1010b1ee2f9fdf68">  546</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#abc1757b0a6b059af1010b1ee2f9fdf68">change_seatAvail</a>()</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;{</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    <span class="keywordtype">char</span> fn[10];</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    <span class="keywordtype">int</span> seatAvail;</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    printf(<span class="stringliteral">&quot;Enter flight number: &quot;</span>);</div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>,fn);</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    printf(<span class="stringliteral">&quot;Enter number of available seats: &quot;</span>);</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    scanf(<span class="stringliteral">&quot;%d&quot;</span>,&amp;seatAvail);</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;    <a class="code" href="booking_8h.html#afd304fc13197b152e61e06ddeb3e9f90">updateSeats</a>(fn, seatAvail);</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;}</div>
-<div class="line"><a name="l00563"></a><span class="lineno"><a class="line" href="booking_8h.html#a41cca15eb8bebf50d1b26ccfe87613a4">  563</a></span>&#160;<span class="keywordtype">char</span>* <a class="code" href="booking_8h.html#a41cca15eb8bebf50d1b26ccfe87613a4">encrypt</a>(<span class="keywordtype">char</span> *array)</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;{</div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;    <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;    <span class="keywordtype">int</span> array_size=strlen(array);</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    <span class="keywordtype">char</span> secret[8] = { 22, 53, 44, 71, 66, 177, 253, 122 };</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    <span class="keywordflow">for</span>(i = 0; i &lt; array_size; i++)</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        array[i] = array[i] ^ secret[i];</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    <span class="comment">//printf(&quot;Program : %s&quot;,array);</span></div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    <span class="keywordflow">return</span> array;</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;}</div>
-<div class="line"><a name="l00579"></a><span class="lineno"><a class="line" href="booking_8h.html#ac84f2ee073274a9b814ac581ad20a65f">  579</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="booking_8h.html#ac84f2ee073274a9b814ac581ad20a65f">checkPass</a>()</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;{</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;    FILE *fp;</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    <span class="keywordtype">char</span> passf[10],pass[10];</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    printf(<span class="stringliteral">&quot;Enter password: &quot;</span>);</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>,pass);</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;    fp=fopen(<span class="stringliteral">&quot;src/password.txt&quot;</span>,<span class="stringliteral">&quot;r&quot;</span>);</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    fgets (passf , 10 , fp);</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    <span class="keywordflow">if</span>(strcmp(<a class="code" href="booking_8h.html#a41cca15eb8bebf50d1b26ccfe87613a4">encrypt</a>(pass),passf)==0)</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        printf(<span class="stringliteral">&quot;Authentication successful\n&quot;</span>);</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;    {</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;        printf(<span class="stringliteral">&quot;Incorrect password\n&quot;</span>);</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    }</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    fclose(fp);</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;}</div>
-<div class="line"><a name="l00603"></a><span class="lineno"><a class="line" href="booking_8h.html#a172b316ae297321ab403c77eed060a65">  603</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a172b316ae297321ab403c77eed060a65">change_password</a>()</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;{</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;    FILE *fp;</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    <span class="keywordtype">char</span> pass[10];</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    printf(<span class="stringliteral">&quot;Enter password: &quot;</span>);</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>,pass);</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    fp=fopen(<span class="stringliteral">&quot;src/password.txt&quot;</span>,<span class="stringliteral">&quot;w&quot;</span>);</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;    fprintf(fp,<span class="stringliteral">&quot;%s&quot;</span>,<a class="code" href="booking_8h.html#a41cca15eb8bebf50d1b26ccfe87613a4">encrypt</a>(pass));</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;    fclose(fp);</div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;}</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* BOOKING_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="booking_8h_html_a31fd709a0e6b46aea2b5a7c95007400f"><div class="ttname"><a href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a></div><div class="ttdeci">void remove_newline(char *a)</div><div class="ttdoc">Remove trailing new line character. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00247">booking.h:247</a></div></div>
-<div class="ttc" id="structticket_html_a7316ad33eb22844503746b7542bb2903"><div class="ttname"><a href="structticket.html#a7316ad33eb22844503746b7542bb2903">ticket::arr</a></div><div class="ttdeci">struct tm arr</div><div class="ttdoc">Arrival time. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00064">booking.h:64</a></div></div>
-<div class="ttc" id="booking_8h_html_adf46d26b65f413f0d5a07f17882c826c"><div class="ttname"><a href="booking_8h.html#adf46d26b65f413f0d5a07f17882c826c">feedDetails</a></div><div class="ttdeci">void feedDetails(int choice)</div><div class="ttdoc">Extract details of the flight selected. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00201">booking.h:201</a></div></div>
-<div class="ttc" id="booking_8h_html_a7393cc8662b4c4799c2db47c8c8adf8f"><div class="ttname"><a href="booking_8h.html#a7393cc8662b4c4799c2db47c8c8adf8f">increaseCapacity</a></div><div class="ttdeci">void increaseCapacity()</div><div class="ttdoc">Increases the capacity of the structure. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00080">booking.h:80</a></div></div>
-<div class="ttc" id="booking_8h_html_a41cca15eb8bebf50d1b26ccfe87613a4"><div class="ttname"><a href="booking_8h.html#a41cca15eb8bebf50d1b26ccfe87613a4">encrypt</a></div><div class="ttdeci">char * encrypt(char *array)</div><div class="ttdoc">Encrypts a string. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00563">booking.h:563</a></div></div>
-<div class="ttc" id="structticket_html_a823f183077ae42b41a4f00941da72430"><div class="ttname"><a href="structticket.html#a823f183077ae42b41a4f00941da72430">ticket::active</a></div><div class="ttdeci">bool active</div><div class="ttdoc">Status of booking - Valid or Deleted. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00060">booking.h:60</a></div></div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    <a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>=fopen(<span class="stringliteral">&quot;src/flights.txt&quot;</span>, <span class="stringliteral">&quot;a+&quot;</span>);</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    <span class="keywordtype">char</span> depf[20], desf[20], fn[10], dep_t[10], arr_t[10], al[20];</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;    <span class="keywordtype">int</span> faref, seatAvail;</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    printf(<span class="stringliteral">&quot;Enter departure city: &quot;</span>);</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;    fgets(depf, <span class="keyword">sizeof</span>(depf), stdin);</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(depf);</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    printf(<span class="stringliteral">&quot;Enter destination city: &quot;</span>);</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    fgets(desf, <span class="keyword">sizeof</span>(desf), stdin);</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(desf);</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    printf(<span class="stringliteral">&quot;Enter airline: &quot;</span>);</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    fgets(al, <span class="keyword">sizeof</span>(al), stdin);</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(al);</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    printf(<span class="stringliteral">&quot;Enter flight number: &quot;</span>);</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    fgets(fn, <span class="keyword">sizeof</span>(fn), stdin);</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(fn);</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    printf(<span class="stringliteral">&quot;Enter departure time: &quot;</span>);</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    fgets(dep_t, <span class="keyword">sizeof</span>(dep_t), stdin);</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(dep_t);</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    printf(<span class="stringliteral">&quot;Enter arrival time: &quot;</span>);</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    fgets(arr_t, <span class="keyword">sizeof</span>(arr_t), stdin);</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;    <a class="code" href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a>(arr_t);</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;    printf(<span class="stringliteral">&quot;Enter fare: &quot;</span>);</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    scanf(<span class="stringliteral">&quot;%d&quot;</span>,&amp;faref);</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    printf(<span class="stringliteral">&quot;Enter available seats: &quot;</span>);</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    scanf(<span class="stringliteral">&quot;%d&quot;</span>,&amp;seatAvail);</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    fprintf(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>,<span class="stringliteral">&quot;%s,%s,%s,%s,%s,%s,%10d,%10d\n&quot;</span>, depf, desf, al, fn, dep_t, arr_t, faref, seatAvail);</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    fclose(<a class="code" href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a>);</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;}</div>
+<div class="line"><a name="l00528"></a><span class="lineno"><a class="line" href="booking_8h.html#abc1757b0a6b059af1010b1ee2f9fdf68">  528</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#abc1757b0a6b059af1010b1ee2f9fdf68">change_seatAvail</a>()</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;{</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    <span class="keywordtype">char</span> fn[10];</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    <span class="keywordtype">int</span> seatAvail;</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    printf(<span class="stringliteral">&quot;Enter flight number: &quot;</span>);</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>,fn);</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    printf(<span class="stringliteral">&quot;Enter number of available seats: &quot;</span>);</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    scanf(<span class="stringliteral">&quot;%d&quot;</span>,&amp;seatAvail);</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    <a class="code" href="booking_8h.html#afd304fc13197b152e61e06ddeb3e9f90">updateSeats</a>(fn, seatAvail);</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;}</div>
+<div class="line"><a name="l00545"></a><span class="lineno"><a class="line" href="booking_8h.html#a41cca15eb8bebf50d1b26ccfe87613a4">  545</a></span>&#160;<span class="keywordtype">char</span>* <a class="code" href="booking_8h.html#a41cca15eb8bebf50d1b26ccfe87613a4">encrypt</a>(<span class="keywordtype">char</span> *array)</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;{</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    <span class="keywordtype">int</span> array_size=strlen(array);</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    <span class="keywordtype">char</span> secret[8] = { 22, 53, 44, 71, 66, 177, 253, 122 };</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    <span class="keywordflow">for</span>(i = 0; i &lt; array_size; i++)</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        array[i] = array[i] ^ secret[i];</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    <span class="keywordflow">return</span> array;</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;}</div>
+<div class="line"><a name="l00560"></a><span class="lineno"><a class="line" href="booking_8h.html#ac84f2ee073274a9b814ac581ad20a65f">  560</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="booking_8h.html#ac84f2ee073274a9b814ac581ad20a65f">checkPass</a>()</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;{</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;    FILE *fp;</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;    <span class="keywordtype">char</span> passf[10],pass[10];</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;    printf(<span class="stringliteral">&quot;Enter password: &quot;</span>);</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>,pass);</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    fp=fopen(<span class="stringliteral">&quot;src/password.txt&quot;</span>,<span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    fgets (passf , 10 , fp);</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;    <span class="keywordflow">if</span>(strcmp(<a class="code" href="booking_8h.html#a41cca15eb8bebf50d1b26ccfe87613a4">encrypt</a>(pass),passf)==0)</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        printf(<span class="stringliteral">&quot;Authentication successful\n&quot;</span>);</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    {</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;        printf(<span class="stringliteral">&quot;Incorrect password\n&quot;</span>);</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    }</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;    fclose(fp);</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;}</div>
+<div class="line"><a name="l00584"></a><span class="lineno"><a class="line" href="booking_8h.html#a172b316ae297321ab403c77eed060a65">  584</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="booking_8h.html#a172b316ae297321ab403c77eed060a65">change_password</a>()</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;{</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;    FILE *fp;</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    <span class="keywordtype">char</span> pass[10];</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    printf(<span class="stringliteral">&quot;Enter password: &quot;</span>);</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>,pass);</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;    fp=fopen(<span class="stringliteral">&quot;src/password.txt&quot;</span>,<span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;    fprintf(fp,<span class="stringliteral">&quot;%s&quot;</span>,<a class="code" href="booking_8h.html#a41cca15eb8bebf50d1b26ccfe87613a4">encrypt</a>(pass));</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    fclose(fp);</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;}</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* BOOKING_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="booking_8h_html_a31fd709a0e6b46aea2b5a7c95007400f"><div class="ttname"><a href="booking_8h.html#a31fd709a0e6b46aea2b5a7c95007400f">remove_newline</a></div><div class="ttdeci">void remove_newline(char *a)</div><div class="ttdoc">Remove trailing new line character. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00238">booking.h:238</a></div></div>
+<div class="ttc" id="structticket_html_a7316ad33eb22844503746b7542bb2903"><div class="ttname"><a href="structticket.html#a7316ad33eb22844503746b7542bb2903">ticket::arr</a></div><div class="ttdeci">struct tm arr</div><div class="ttdoc">Arrival time. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00062">booking.h:62</a></div></div>
+<div class="ttc" id="booking_8h_html_adf46d26b65f413f0d5a07f17882c826c"><div class="ttname"><a href="booking_8h.html#adf46d26b65f413f0d5a07f17882c826c">feedDetails</a></div><div class="ttdeci">void feedDetails(int choice)</div><div class="ttdoc">Extract details of the flight selected. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00194">booking.h:194</a></div></div>
+<div class="ttc" id="booking_8h_html_a7393cc8662b4c4799c2db47c8c8adf8f"><div class="ttname"><a href="booking_8h.html#a7393cc8662b4c4799c2db47c8c8adf8f">increaseCapacity</a></div><div class="ttdeci">void increaseCapacity()</div><div class="ttdoc">Increases the capacity of the structure. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00078">booking.h:78</a></div></div>
+<div class="ttc" id="booking_8h_html_a41cca15eb8bebf50d1b26ccfe87613a4"><div class="ttname"><a href="booking_8h.html#a41cca15eb8bebf50d1b26ccfe87613a4">encrypt</a></div><div class="ttdeci">char * encrypt(char *array)</div><div class="ttdoc">Encrypts a string. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00545">booking.h:545</a></div></div>
+<div class="ttc" id="structticket_html_a823f183077ae42b41a4f00941da72430"><div class="ttname"><a href="structticket.html#a823f183077ae42b41a4f00941da72430">ticket::active</a></div><div class="ttdeci">bool active</div><div class="ttdoc">Status of booking - Valid or Deleted. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00058">booking.h:58</a></div></div>
 <div class="ttc" id="booking_8h_html_a489752c928f8e184e7775d0e1074e726"><div class="ttname"><a href="booking_8h.html#a489752c928f8e184e7775d0e1074e726">nTicket</a></div><div class="ttdeci">int nTicket</div><div class="ttdoc">Number of tickets booked. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00031">booking.h:31</a></div></div>
-<div class="ttc" id="structticket_html_a4bd2f22d43528cbdd9b4cc1d4ea5754f"><div class="ttname"><a href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">ticket::dep</a></div><div class="ttdeci">struct tm dep</div><div class="ttdoc">Departure time. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00062">booking.h:62</a></div></div>
-<div class="ttc" id="booking_8h_html_a8db989c03e6719d9888dd3ec3d2ef7cc"><div class="ttname"><a href="booking_8h.html#a8db989c03e6719d9888dd3ec3d2ef7cc">readFile</a></div><div class="ttdeci">void readFile()</div><div class="ttdoc">Reads file containing the bookings. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00109">booking.h:109</a></div></div>
-<div class="ttc" id="booking_8h_html_ad88be1614c9ccbe093df46f473cc506a"><div class="ttname"><a href="booking_8h.html#ad88be1614c9ccbe093df46f473cc506a">startBooking</a></div><div class="ttdeci">void startBooking()</div><div class="ttdoc">Initiates booking. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00128">booking.h:128</a></div></div>
-<div class="ttc" id="booking_8h_html_aa8b24ee866a57f2dab7c6df91d58670e"><div class="ttname"><a href="booking_8h.html#aa8b24ee866a57f2dab7c6df91d58670e">updateFare</a></div><div class="ttdeci">void updateFare(char *fn, int new_fare)</div><div class="ttdoc">Modifies the fare. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00350">booking.h:350</a></div></div>
+<div class="ttc" id="structticket_html_a4bd2f22d43528cbdd9b4cc1d4ea5754f"><div class="ttname"><a href="structticket.html#a4bd2f22d43528cbdd9b4cc1d4ea5754f">ticket::dep</a></div><div class="ttdeci">struct tm dep</div><div class="ttdoc">Departure time. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00060">booking.h:60</a></div></div>
+<div class="ttc" id="booking_8h_html_a8db989c03e6719d9888dd3ec3d2ef7cc"><div class="ttname"><a href="booking_8h.html#a8db989c03e6719d9888dd3ec3d2ef7cc">readFile</a></div><div class="ttdeci">void readFile()</div><div class="ttdoc">Reads file containing the bookings. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00107">booking.h:107</a></div></div>
+<div class="ttc" id="booking_8h_html_ad88be1614c9ccbe093df46f473cc506a"><div class="ttname"><a href="booking_8h.html#ad88be1614c9ccbe093df46f473cc506a">startBooking</a></div><div class="ttdeci">void startBooking()</div><div class="ttdoc">Initiates booking. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00125">booking.h:125</a></div></div>
+<div class="ttc" id="booking_8h_html_aa8b24ee866a57f2dab7c6df91d58670e"><div class="ttname"><a href="booking_8h.html#aa8b24ee866a57f2dab7c6df91d58670e">updateFare</a></div><div class="ttdeci">void updateFare(char *fn, int new_fare)</div><div class="ttdoc">Modifies the fare. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00336">booking.h:336</a></div></div>
 <div class="ttc" id="booking_8h_html_af6a258d8f3ee5206d682d799316314b1"><div class="ttname"><a href="booking_8h.html#af6a258d8f3ee5206d682d799316314b1">bool</a></div><div class="ttdeci">bool</div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00029">booking.h:29</a></div></div>
-<div class="ttc" id="booking_8h_html_a22c4a7a4d5c69264db7a71b0883e7743"><div class="ttname"><a href="booking_8h.html#a22c4a7a4d5c69264db7a71b0883e7743">newBooking</a></div><div class="ttdeci">void newBooking()</div><div class="ttdoc">Records a new booking. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00378">booking.h:378</a></div></div>
-<div class="ttc" id="booking_8h_html_a16b39c080047511200e18c5fa367061d"><div class="ttname"><a href="booking_8h.html#a16b39c080047511200e18c5fa367061d">findBooking</a></div><div class="ttdeci">void findBooking()</div><div class="ttdoc">Queries about the booking. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00471">booking.h:471</a></div></div>
+<div class="ttc" id="booking_8h_html_a22c4a7a4d5c69264db7a71b0883e7743"><div class="ttname"><a href="booking_8h.html#a22c4a7a4d5c69264db7a71b0883e7743">newBooking</a></div><div class="ttdeci">void newBooking()</div><div class="ttdoc">Records a new booking. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00363">booking.h:363</a></div></div>
+<div class="ttc" id="booking_8h_html_a16b39c080047511200e18c5fa367061d"><div class="ttname"><a href="booking_8h.html#a16b39c080047511200e18c5fa367061d">findBooking</a></div><div class="ttdeci">void findBooking()</div><div class="ttdoc">Queries about the booking. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00453">booking.h:453</a></div></div>
 <div class="ttc" id="booking_8h_html_adbe66a087ac3fd4a5b0566f64ca2d12b"><div class="ttname"><a href="booking_8h.html#adbe66a087ac3fd4a5b0566f64ca2d12b">capacity</a></div><div class="ttdeci">int capacity</div><div class="ttdoc">Number of bookings that the structure array can store. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00033">booking.h:33</a></div></div>
-<div class="ttc" id="booking_8h_html_abd95a435c280990f8e994539b1aa6b67"><div class="ttname"><a href="booking_8h.html#abd95a435c280990f8e994539b1aa6b67">change_fare</a></div><div class="ttdeci">void change_fare()</div><div class="ttdoc">Queries about flight fare change. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00436">booking.h:436</a></div></div>
-<div class="ttc" id="booking_8h_html_aa924f9ef999c8e33f83eb98e56d31784"><div class="ttname"><a href="booking_8h.html#aa924f9ef999c8e33f83eb98e56d31784">count</a></div><div class="ttdeci">int count(int n)</div><div class="ttdoc">Counts the number of digits in a number. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00232">booking.h:232</a></div></div>
-<div class="ttc" id="booking_8h_html_a11f6041e0fa57629e1d72f56e23ff37f"><div class="ttname"><a href="booking_8h.html#a11f6041e0fa57629e1d72f56e23ff37f">deleteBooking</a></div><div class="ttdeci">void deleteBooking()</div><div class="ttdoc">Deletes a booking. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00492">booking.h:492</a></div></div>
-<div class="ttc" id="booking_8h_html_a63ca097217c3ffff749bde57fedda0e2"><div class="ttname"><a href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a></div><div class="ttdeci">FILE * fi</div><div class="ttdoc">File variable for availableFlights.txt. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00073">booking.h:73</a></div></div>
-<div class="ttc" id="booking_8h_html_a0d5bb12b8983bc795d19143b97d59ba2"><div class="ttname"><a href="booking_8h.html#a0d5bb12b8983bc795d19143b97d59ba2">isSeatAvailable</a></div><div class="ttdeci">bool isSeatAvailable(int n)</div><div class="ttdoc">Checks for seat availability. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00291">booking.h:291</a></div></div>
-<div class="ttc" id="booking_8h_html_abc9bc6f097c12071cf29259f13815e26"><div class="ttname"><a href="booking_8h.html#abc9bc6f097c12071cf29259f13815e26">displayFlight</a></div><div class="ttdeci">bool displayFlight(char dep[], char des[])</div><div class="ttdoc">Display flights for the route. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00165">booking.h:165</a></div></div>
-<div class="ttc" id="booking_8h_html_a477fceed7c21b545abec0f6de33ccb88"><div class="ttname"><a href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a></div><div class="ttdeci">FILE * fo</div><div class="ttdoc">File variable for flights.txt. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00071">booking.h:71</a></div></div>
+<div class="ttc" id="booking_8h_html_abd95a435c280990f8e994539b1aa6b67"><div class="ttname"><a href="booking_8h.html#abd95a435c280990f8e994539b1aa6b67">change_fare</a></div><div class="ttdeci">void change_fare()</div><div class="ttdoc">Queries about flight fare change. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00418">booking.h:418</a></div></div>
+<div class="ttc" id="booking_8h_html_aa924f9ef999c8e33f83eb98e56d31784"><div class="ttname"><a href="booking_8h.html#aa924f9ef999c8e33f83eb98e56d31784">count</a></div><div class="ttdeci">int count(int n)</div><div class="ttdoc">Counts the number of digits in a number. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00223">booking.h:223</a></div></div>
+<div class="ttc" id="booking_8h_html_a11f6041e0fa57629e1d72f56e23ff37f"><div class="ttname"><a href="booking_8h.html#a11f6041e0fa57629e1d72f56e23ff37f">deleteBooking</a></div><div class="ttdeci">void deleteBooking()</div><div class="ttdoc">Deletes a booking. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00474">booking.h:474</a></div></div>
+<div class="ttc" id="booking_8h_html_a63ca097217c3ffff749bde57fedda0e2"><div class="ttname"><a href="booking_8h.html#a63ca097217c3ffff749bde57fedda0e2">fi</a></div><div class="ttdeci">FILE * fi</div><div class="ttdoc">File variable for availableFlights.txt. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00071">booking.h:71</a></div></div>
+<div class="ttc" id="booking_8h_html_a0d5bb12b8983bc795d19143b97d59ba2"><div class="ttname"><a href="booking_8h.html#a0d5bb12b8983bc795d19143b97d59ba2">isSeatAvailable</a></div><div class="ttdeci">bool isSeatAvailable(int n)</div><div class="ttdoc">Checks for seat availability. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00281">booking.h:281</a></div></div>
+<div class="ttc" id="booking_8h_html_abc9bc6f097c12071cf29259f13815e26"><div class="ttname"><a href="booking_8h.html#abc9bc6f097c12071cf29259f13815e26">displayFlight</a></div><div class="ttdeci">bool displayFlight(char dep[], char des[])</div><div class="ttdoc">Display flights for the route. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00162">booking.h:162</a></div></div>
+<div class="ttc" id="booking_8h_html_a477fceed7c21b545abec0f6de33ccb88"><div class="ttname"><a href="booking_8h.html#a477fceed7c21b545abec0f6de33ccb88">fo</a></div><div class="ttdeci">FILE * fo</div><div class="ttdoc">File variable for flights.txt. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00069">booking.h:69</a></div></div>
 <div class="ttc" id="structticket_html"><div class="ttname"><a href="structticket.html">ticket</a></div><div class="ttdoc">Structure to store the bookings done. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00039">booking.h:39</a></div></div>
-<div class="ttc" id="booking_8h_html_a172b316ae297321ab403c77eed060a65"><div class="ttname"><a href="booking_8h.html#a172b316ae297321ab403c77eed060a65">change_password</a></div><div class="ttdeci">void change_password()</div><div class="ttdoc">Changes administrator password. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00603">booking.h:603</a></div></div>
-<div class="ttc" id="booking_8h_html_a94a09185856dd115e3f87302475f005e"><div class="ttname"><a href="booking_8h.html#a94a09185856dd115e3f87302475f005e">getIndex</a></div><div class="ttdeci">int getIndex(char *br)</div><div class="ttdoc">Finds the index of the booking. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00453">booking.h:453</a></div></div>
-<div class="ttc" id="booking_8h_html_a403f832272d4c63af48b112755363380"><div class="ttname"><a href="booking_8h.html#a403f832272d4c63af48b112755363380">addFlight</a></div><div class="ttdeci">void addFlight()</div><div class="ttdoc">Adds a new flight. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00510">booking.h:510</a></div></div>
-<div class="ttc" id="structticket_html_af79afaf9c850bee6ec68f883d359c068"><div class="ttname"><a href="structticket.html#af79afaf9c850bee6ec68f883d359c068">ticket::fare</a></div><div class="ttdeci">int fare</div><div class="ttdoc">Fare of the ticket. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00058">booking.h:58</a></div></div>
-<div class="ttc" id="booking_8h_html_afd304fc13197b152e61e06ddeb3e9f90"><div class="ttname"><a href="booking_8h.html#afd304fc13197b152e61e06ddeb3e9f90">updateSeats</a></div><div class="ttdeci">void updateSeats(char *fn, int new_seatAvail)</div><div class="ttdoc">Modifies the seat availability. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00259">booking.h:259</a></div></div>
-<div class="ttc" id="booking_8h_html_abc1757b0a6b059af1010b1ee2f9fdf68"><div class="ttname"><a href="booking_8h.html#abc1757b0a6b059af1010b1ee2f9fdf68">change_seatAvail</a></div><div class="ttdeci">void change_seatAvail()</div><div class="ttdoc">Queries about the flight seat availability change. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00546">booking.h:546</a></div></div>
-<div class="ttc" id="booking_8h_html_acc6b6c3739f0484dc9d8d5e6d161402c"><div class="ttname"><a href="booking_8h.html#acc6b6c3739f0484dc9d8d5e6d161402c">gen_reference</a></div><div class="ttdeci">void gen_reference(char *s, int len)</div><div class="ttdoc">Generates booking reference number. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00141">booking.h:141</a></div></div>
-<div class="ttc" id="booking_8h_html_a899ce30664a62177a9346df7fd823b18"><div class="ttname"><a href="booking_8h.html#a899ce30664a62177a9346df7fd823b18">displayBooking</a></div><div class="ttdeci">void displayBooking(int x)</div><div class="ttdoc">Displays all the details of a booking. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00315">booking.h:315</a></div></div>
-<div class="ttc" id="booking_8h_html_a43177cd7fff22d7811e1a407e5f1be15"><div class="ttname"><a href="booking_8h.html#a43177cd7fff22d7811e1a407e5f1be15">booking</a></div><div class="ttdeci">ticket * booking</div><div class="ttdoc">Pointer to the structure array containing bookings. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00069">booking.h:69</a></div></div>
-<div class="ttc" id="booking_8h_html_a0d571cd4fd51f58cf22493ea4ec18170"><div class="ttname"><a href="booking_8h.html#a0d571cd4fd51f58cf22493ea4ec18170">rewriteFile</a></div><div class="ttdeci">void rewriteFile()</div><div class="ttdoc">Rewrites file containing bookings. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00094">booking.h:94</a></div></div>
-<div class="ttc" id="booking_8h_html_ac84f2ee073274a9b814ac581ad20a65f"><div class="ttname"><a href="booking_8h.html#ac84f2ee073274a9b814ac581ad20a65f">checkPass</a></div><div class="ttdeci">bool checkPass()</div><div class="ttdoc">Queries for password. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00579">booking.h:579</a></div></div>
+<div class="ttc" id="booking_8h_html_a172b316ae297321ab403c77eed060a65"><div class="ttname"><a href="booking_8h.html#a172b316ae297321ab403c77eed060a65">change_password</a></div><div class="ttdeci">void change_password()</div><div class="ttdoc">Changes administrator password. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00584">booking.h:584</a></div></div>
+<div class="ttc" id="booking_8h_html_a94a09185856dd115e3f87302475f005e"><div class="ttname"><a href="booking_8h.html#a94a09185856dd115e3f87302475f005e">getIndex</a></div><div class="ttdeci">int getIndex(char *br)</div><div class="ttdoc">Finds the index of the booking. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00435">booking.h:435</a></div></div>
+<div class="ttc" id="booking_8h_html_a403f832272d4c63af48b112755363380"><div class="ttname"><a href="booking_8h.html#a403f832272d4c63af48b112755363380">addFlight</a></div><div class="ttdeci">void addFlight()</div><div class="ttdoc">Adds a new flight. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00492">booking.h:492</a></div></div>
+<div class="ttc" id="structticket_html_af79afaf9c850bee6ec68f883d359c068"><div class="ttname"><a href="structticket.html#af79afaf9c850bee6ec68f883d359c068">ticket::fare</a></div><div class="ttdeci">int fare</div><div class="ttdoc">Fare of the ticket. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00056">booking.h:56</a></div></div>
+<div class="ttc" id="booking_8h_html_afd304fc13197b152e61e06ddeb3e9f90"><div class="ttname"><a href="booking_8h.html#afd304fc13197b152e61e06ddeb3e9f90">updateSeats</a></div><div class="ttdeci">void updateSeats(char *fn, int new_seatAvail)</div><div class="ttdoc">Modifies the seat availability. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00250">booking.h:250</a></div></div>
+<div class="ttc" id="booking_8h_html_abc1757b0a6b059af1010b1ee2f9fdf68"><div class="ttname"><a href="booking_8h.html#abc1757b0a6b059af1010b1ee2f9fdf68">change_seatAvail</a></div><div class="ttdeci">void change_seatAvail()</div><div class="ttdoc">Queries about the flight seat availability change. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00528">booking.h:528</a></div></div>
+<div class="ttc" id="booking_8h_html_acc6b6c3739f0484dc9d8d5e6d161402c"><div class="ttname"><a href="booking_8h.html#acc6b6c3739f0484dc9d8d5e6d161402c">gen_reference</a></div><div class="ttdeci">void gen_reference(char *s, int len)</div><div class="ttdoc">Generates booking reference number. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00138">booking.h:138</a></div></div>
+<div class="ttc" id="booking_8h_html_a899ce30664a62177a9346df7fd823b18"><div class="ttname"><a href="booking_8h.html#a899ce30664a62177a9346df7fd823b18">displayBooking</a></div><div class="ttdeci">void displayBooking(int x)</div><div class="ttdoc">Displays all the details of a booking. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00305">booking.h:305</a></div></div>
+<div class="ttc" id="booking_8h_html_a43177cd7fff22d7811e1a407e5f1be15"><div class="ttname"><a href="booking_8h.html#a43177cd7fff22d7811e1a407e5f1be15">booking</a></div><div class="ttdeci">ticket * booking</div><div class="ttdoc">Pointer to the structure array containing bookings. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00067">booking.h:67</a></div></div>
+<div class="ttc" id="booking_8h_html_a0d571cd4fd51f58cf22493ea4ec18170"><div class="ttname"><a href="booking_8h.html#a0d571cd4fd51f58cf22493ea4ec18170">rewriteFile</a></div><div class="ttdeci">void rewriteFile()</div><div class="ttdoc">Rewrites file containing bookings. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00092">booking.h:92</a></div></div>
+<div class="ttc" id="booking_8h_html_ac84f2ee073274a9b814ac581ad20a65f"><div class="ttname"><a href="booking_8h.html#ac84f2ee073274a9b814ac581ad20a65f">checkPass</a></div><div class="ttdeci">bool checkPass()</div><div class="ttdoc">Queries for password. </div><div class="ttdef"><b>Definition:</b> <a href="booking_8h_source.html#l00560">booking.h:560</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="booking_8h.html">booking.h</a></li>
-    <li class="footer">Generated on Sun Nov 9 2014 19:49:14 for AirlineBooking by
+    <li class="footer">Generated on Tue Nov 11 2014 10:15:06 for AirlineBooking by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

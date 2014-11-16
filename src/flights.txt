@@ -1,7 +1,8 @@
 Bangalore,Delhi,Air India,AI624,08:00,10:00,     10000,        89
-Bangalore,Mumbai,Indigo,6E449,14:49,14:51,        10,       464
-Jaipur,Bangalore,Go Air,IX345,10:30,12:30,       123,      1109
-Bangalore,Mumbai,Spice Jet,SG123,14:20,15:11,        12,       117
+Bangalore,Mumbai,Indigo,6E449,14:49,14:51,      5500,       121
+Jaipur,Bangalore,Go Air,IX345,10:30,12:30,      3100,      1108
+Bangalore,Mumbai,Spice Jet,SG123,14:20,15:11,      5123,       116
 Bangalore,Guwahati,JetKonnect,K2363,07:45,10:05,     11932,       101
 Bangalore,Hyderabad,SpiceJet,SG971,09:00,10:00,      2892,       123
-Jaipur,Delhi,AirIndia,AI611,17:05,18:05,     10602,        96
+Jaipur,Delhi,AirIndia,AI611,17:05,18:05,     10602,         0
+Mangalore,Bangalore,AirIndia,AI523,12:00,14:00,       123,        43

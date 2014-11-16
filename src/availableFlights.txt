@@ -1,1 +1,2 @@
-1,Jaipur,Delhi,AirIndia,AI611,17:05,18:05,10602,97
+1,Bangalore,Mumbai,Indigo,6E449,14:49,14:51,5500,122
+2,Bangalore,Mumbai,Spice Jet,SG123,14:20,15:11,5123,116
